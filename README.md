@@ -1,3 +1,21 @@
+# Application Update - Netbuilder Training Service Updates
+
+* *Authors* : [Deividas, Aaron, Bruce, Sam, James, Jahid, Bruce, Nathan]
+* *Level* : Consultants
+* *Application Servers* : GlassFish 3.x
+* *Summary* : Fixes applied to petstore-like application to make it better and train.
+
+## Purpose of exercise
+
+There are multiple purposes for the assigning of this exercise and they include;
+
+	- To gain skills using Github to work concurrently.
+	- To locate and provide solutions to services that are not working correctly / efficiently.
+
+### ChangeLog
+
+	- To be updated (15/07/14)
+
 # Application - Petstore Java EE 6
 
 * *Author* : [Antonio Goncalves](http://www.antoniogoncalves.org)
