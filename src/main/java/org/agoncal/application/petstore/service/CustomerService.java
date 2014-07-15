@@ -34,7 +34,8 @@ public class CustomerService implements Serializable {
     // ======================================
 
     public boolean doesLoginAlreadyExist(final String login) {
-
+    
+    	//If login is null, throw a validation exception.
         if (login == null)
             throw new ValidationException("Login cannot be null");
 
