@@ -8,7 +8,7 @@ import javax.validation.constraints.Size;
 /**
  * @author Antonio Goncalves
  *         http://www.antoniogoncalves.org
- *         --
+ *         ---
  */
 
 @Embeddable
