@@ -38,5 +38,7 @@ public @interface Email {
   @Retention(RUNTIME)
   @interface List {
     Email[] value();
+    
+    int BruceTest = 0;
   }
 }
