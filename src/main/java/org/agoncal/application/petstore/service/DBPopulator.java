@@ -15,10 +15,16 @@ import javax.inject.Inject;
  *         http://www.antoniogoncalves.org
  *         --
  */
-
+//everything is in this class
 @Singleton
+
+//this bean is started on startup
 @Startup
+
+//make logs 
 @Loggable
+
+//set the login details for the database
 @DataSourceDefinition(
         className = "org.apache.derby.jdbc.EmbeddedDataSource",
         name = "java:global/jdbc/applicationPetstoreDS",
@@ -32,7 +38,7 @@ public class DBPopulator {
     // ======================================
     // =             Attributes             =
     // ======================================
-
+//there are all our catagories
     private Category fish;
     private Category dog;
     private Category reptile;
@@ -54,12 +60,14 @@ public class DBPopulator {
     // =          Lifecycle Methods         =
     // ======================================
 
+    //after making the bean load all our products and categories to the database
     @PostConstruct
     private void populateDB() {
         initCatalog();
         initCustomers();
     }
 
+    //before the bean is destroyed delete all the products and catagories so that we dont have duplicates when we start it again
     @PreDestroy
     private void clearDB() {
         catalogService.removeCategory(fish);
@@ -77,7 +85,7 @@ public class DBPopulator {
     // ======================================
     // =           Private Methods          =
     // ======================================
-
+//the first part of populateDB which ADDS ALL THE DEETS TO THE PRODUCT OBJECTS
     private void initCatalog() {
 
         // Categories
@@ -201,7 +209,7 @@ public class DBPopulator {
         catalogService.createCategory(cat);
         catalogService.createCategory(bird);
     }
-
+//this method adds all the default customers to the database so that someone can log in
     private void initCustomers() {
         marc = new Customer("Marc", "Fleury", "marc", "marc", "marc@jboss.org", new Address("65 Ritherdon Road", "Los Angeles", "56421", "USA"));
         bill = new Customer("Bill", "Gates", "bill", "bill", "bill.gates@microsoft.com", new Address("27 West Side", "Alhabama", "8401", "USA"));
