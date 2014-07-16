@@ -17,12 +17,10 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
  *         http://www.antoniogoncalves.org
  *         --
  */
-//<<<<<<< HEAD
-//Validation, checking for size and not null.
-//=======
+
 
 //cannot be nullified
-//>>>>>>> 9cd36918bda870c18948a658458fddf05add49e4
+
 @NotNull
 
 //defines the size of a login
