@@ -34,12 +34,8 @@ public class Credentials {
     // ======================================
     // =             Attributes             =
     // ======================================
-<<<<<<< HEAD
 
-	//Creates the attributes associated with the login credentials.
-=======
 //first attribution of  these strings
->>>>>>> 9cd36918bda870c18948a658458fddf05add49e4
     private String login;
     private String password;
     private String password2;
