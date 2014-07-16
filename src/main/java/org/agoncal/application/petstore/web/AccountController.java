@@ -18,6 +18,8 @@ import java.util.Date;
  * @author Antonio Goncalves http://www.antoniogoncalves.org --
  */
 
+
+//test
 @Named
 @SessionScoped
 @Loggable
