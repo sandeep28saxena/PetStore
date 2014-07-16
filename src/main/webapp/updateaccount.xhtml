@@ -13,7 +13,6 @@
 	<ui:define name="body">
 		<!-- Update account page in website -->
 		<h2>#{i18n.updateYourAccount}</h2>
-
 		<h:form>
 			<!-- Creates a box with personal information and each of the rows -->
 			<legend>#{i18n.createAccount_personalInformation}</legend>
@@ -42,9 +41,9 @@
 				<h:inputText id="telephone"
 					value="#{accountController.loggedinCustomer.telephone}" />
 				<h:message for="telephone" style="color: red;" />
-				
+
 				<h:outputText value="#{i18n.customer_dateOfBirth}  (dd.MM.yyyy):" />
-				<h:inputText id="dateOfBirth"
+				<h:inputText id="dateOfBirth" type="text" name="dateOfBirth"
 					value="#{accountController.loggedinCustomer.dateOfBirth}">
 					<f:convertDateTime pattern="dd.MM.yyyy" />
 					
@@ -52,7 +51,7 @@
 				<h:message for="dateOfBirth" style="color: red;" />
 
 			</h:panelGrid>
-			
+
 			<!-- Create a box with address information and rows to be inputed -->
 			<legend>#{i18n.address}</legend>
 			<h:panelGrid columns="3">
@@ -88,12 +87,12 @@
 				<h:message for="country" style="color: red;" />
 
 			</h:panelGrid>
-			
-			<!-- Submit button inisiated doUpdateAccount action, which passes all the inputs -->
+
+			<!-- Submit button performs doUpdateAccount action, which passes all the inputs -->
 			<!-- Acces AccountControler class and doUpdateAccount method -->
 			<div>
-				<h:commandButton value="#{i18n.submit}"
-					action="#{accountController.doUpdateAccount}" type="submit" />
+				<h:commandButton type="submit" value="#{i18n.submit}" name="Submit" id="Submit"
+					action="#{accountController.doUpdateAccount}" />
 			</div>
 		</h:form>
 		
