@@ -40,7 +40,7 @@ public class SimpleLoginModule implements LoginModule {
     // =          Business methods          =
     // ======================================
 
-    //instantiates getCustomerService
+    //instantiates getCustomerService from credentials class
     private CustomerService getCustomerService() {
         if (customerService != null) {
             return customerService;
