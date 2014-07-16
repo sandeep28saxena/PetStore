@@ -173,12 +173,23 @@ public class CatalogService implements Serializable {
         
         //join lists
         List<Item> results = typedQuery.getResultList();
-        results.addAll(typedQuery2.getResultList());
-        //check for duplicates
-        //for(Item i: typedQuery.getResultList()){
-        	
-        //}
         
+        //results.addAll(typedQuery2.getResultList());
+        
+        //check for duplicates
+        for(Item i: typedQuery2.getResultList()){ 
+        	boolean exists = false;
+        	for(Item j: typedQuery.getResultList()){
+        		//check if Item j already exists
+        		if(i.equals(j)){
+        			exists = true;
+        		}
+        	}
+        	//if it doesn't already exist in the list add it
+        	if(!exists){
+        		results.add(i);
+        	}
+        }
         return results;
     }
 
