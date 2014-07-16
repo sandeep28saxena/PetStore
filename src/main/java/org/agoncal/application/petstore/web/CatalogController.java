@@ -18,6 +18,7 @@ import java.util.List;
  */
 //test stuff - nath
 
+
 @Named
 //@RequestScoped TODO should be request scoped
 @SessionScoped
