@@ -40,7 +40,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 //@Documented: Says, that the use of @CheckCase will be contained in the JavaDoc of elements annotated with it
 @Documented
 public @interface Login {
-
+   
     // ======================================
     // =             Attributes             =
     // ======================================
