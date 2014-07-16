@@ -18,11 +18,24 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
  *         --
  */
 
+//cannot be nullified
 @NotNull
+
+//defines the size of a login
 @Size(min = 1, max = 10)
+
+//@Target({ METHOD, FIELD, ANNOTATION_TYPE }): 
+//Says, that methods, fields and annotation declarations may be annotated with @CheckCase (but not type declarations e.g.)
 @Target({METHOD, FIELD})
+
+//@Retention(RUNTIME): Specifies, that annotations of this type will be available at runtime by the means of reflection
 @Retention(RUNTIME)
+
+// @Constraint(validatedBy = CheckCaseValidator.class):
+// Specifies the validator to be used to validate elements annotated with @CheckCase
 @Constraint(validatedBy = {})
+
+//@Documented: Says, that the use of @CheckCase will be contained in the JavaDoc of elements annotated with it
 @Documented
 public @interface Login {
 
