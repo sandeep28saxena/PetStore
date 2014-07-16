@@ -5,8 +5,7 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-	template="WEB-INF/layouts/template.xhtml">,
-
+	template="WEB-INF/layouts/template.xhtml">
 
 	<ui:define name="title">#{i18n.updateYourAccount}</ui:define>
 
@@ -32,7 +31,7 @@
 					value="#{accountController.loggedinCustomer.lastname}" />
 				<h:message for="lastname" style="color: red;" />
 
-				<h:outputText value="#{i18n.customer_email}  :" />
+				<h:outputText value="*#{i18n.customer_email}  :" />
 				<h:inputText id="email"
 					value="#{accountController.loggedinCustomer.email}" />
 				<h:message for="email" style="color: red;" />
@@ -42,11 +41,10 @@
 					value="#{accountController.loggedinCustomer.telephone}" />
 				<h:message for="telephone" style="color: red;" />
 
-				<h:outputText value="#{i18n.customer_dateOfBirth}  (dd.MM.yyyy):" />
+				<h:outputText value="*#{i18n.customer_dateOfBirth}  (dd.MM.yyyy):" />
 				<h:inputText id="dateOfBirth" type="text" name="dateOfBirth"
 					value="#{accountController.loggedinCustomer.dateOfBirth}">
 					<f:convertDateTime pattern="dd.MM.yyyy" />
-					
 				</h:inputText>
 				<h:message for="dateOfBirth" style="color: red;" />
 
@@ -83,7 +81,6 @@
 				<h:outputText value="*#{i18n.address_country}  :" />
 				<h:inputText id="country"
 					value="#{accountController.loggedinCustomer.homeAddress.country}" />
-					
 				<h:message for="country" style="color: red;" />
 
 			</h:panelGrid>
@@ -95,8 +92,6 @@
 					action="#{accountController.doUpdateAccount}" />
 			</div>
 		</h:form>
-		
 
 	</ui:define>
 </ui:composition>
-
