@@ -16,6 +16,7 @@ import java.util.List;
  *         http://www.antoniogoncalves.org
  *         --
  */
+//test stuff - nath
 
 @Named
 //@RequestScoped TODO should be request scoped
