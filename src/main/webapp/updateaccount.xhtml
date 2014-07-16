@@ -12,30 +12,7 @@
 	<ui:define name="body">
 		<!-- Update account page in website -->
 		<h2>#{i18n.updateYourAccount}</h2>
-		<script type="text/javascript">
-			function checkform(dateOfBirth) 
-			{
-				var dateString = document.getElementById('dateOfBirth');
-				alert(dateString);
-				var myDate = new Date(dateString.value);
-				var today = new Date();
-				if (dateString == "") 
-				{
-					//something is wrong
-					window.alert('Please enter date in field!')
-					return false;
-				} 
-				if (myDate > today) {
-					//something else is wrong
-					window.alert('You cannot enter a date in the future!')
-					return false;
-				}
-				// if script gets this far through all of your fields
-				// without problems, it's ok and you can submit the form
-				return true;
-			}
-		</script>
-		<h:form action="" method="post" name="form1" id="form1" onsubmit="return checkform()">
+		<h:form>
 			<!-- Creates a box with personal information and each of the rows -->
 			<legend>#{i18n.createAccount_personalInformation}</legend>
 			<h:panelGrid columns="3">

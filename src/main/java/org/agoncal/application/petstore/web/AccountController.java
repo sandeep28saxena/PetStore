@@ -12,6 +12,7 @@ import javax.inject.Named;
 import javax.security.auth.login.LoginContext;
 import javax.security.auth.login.LoginException;
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * @author Antonio Goncalves
@@ -108,6 +109,22 @@ public class AccountController extends Controller implements Serializable {
     //Inisiates update account and when it is done prints account updated
     //Accesses customerService class and updateCustomer method, passes the loggedinCustomer variable
     public String doUpdateAccount() {
+        Date dateString = loggedinCustomer.getDateOfBirth();
+		Date today = new Date();
+		//Checks if DOB is set to the future date
+		if (dateString.after(today))
+		{
+			addWarningMessage ("Future date declared");
+        	return null;
+		}
+		//DOB input is empty
+        if (dateString.equals(null))
+        {
+        	addWarningMessage ("DOB field needs to be filled in");
+        	//breaks the update action
+        	return null;
+        }
+        //If everything is ok, updates the account information
         loggedinCustomer = customerService.updateCustomer(loggedinCustomer);
         addInformationMessage("account_updated");
         return "showaccount.faces";
