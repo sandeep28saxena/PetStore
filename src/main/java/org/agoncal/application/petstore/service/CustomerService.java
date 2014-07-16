@@ -112,7 +112,8 @@ public class CustomerService implements Serializable {
 				Customer.FIND_ALL, Customer.class);
 		return typedQuery.getResultList();
 	}
-
+	
+	//Updates customer account and its variables, accesses the database
 	public Customer updateCustomer(final Customer customer) {
 
 		// Make sure the object is valid
