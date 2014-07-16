@@ -14,12 +14,14 @@ public class OrderLine {
     // ======================================
     // =             Attributes             =
     // ======================================
-
+	
+	//Sets autoincremented ID into database
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @Column(nullable = false)
     private Integer quantity;
+    //Provides a Foreign Key in the database which catches item from the database
     @OneToOne
     @JoinColumn(name = "item_fk", nullable = false)
     private Item item;
@@ -78,7 +80,8 @@ public class OrderLine {
         if (!(o instanceof OrderLine)) return false;
 
         OrderLine orderLine = (OrderLine) o;
-
+        
+        //Checks if database contains all needed variables
         if (id != null ? !id.equals(orderLine.id) : orderLine.id != null) return false;
         if (item != null ? !item.equals(orderLine.item) : orderLine.item != null) return false;
         if (!quantity.equals(orderLine.quantity)) return false;
@@ -95,6 +98,7 @@ public class OrderLine {
     }
 
     @Override
+    //String builder
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append("OrderLine");

@@ -92,7 +92,9 @@ public class ShoppingCartController extends Controller implements Serializable {
     public String checkout() {
         return "confirmorder.faces";
     }
-
+    
+    //Gets input from webpage (confirmorder.xhtml)
+    //Acess beans which gets Shopping Cart items
     public String confirmOrder() {
         order = orderBean.createOrder(getCustomer(), creditCard, getCartItems());
         cartItems.clear();

@@ -10,7 +10,7 @@ import java.util.List;
  *         http://www.antoniogoncalves.org
  *         --
  */
-
+//Provides entity for Order column in the database
 @Entity
 @Table(name = "t_order")
 @XmlRootElement
@@ -166,7 +166,8 @@ public class Order {
         if (!(o instanceof Order)) return false;
 
         Order order = (Order) o;
-
+        
+        //Checks if database contains all the needed variables
         if (!customer.equals(order.customer)) return false;
         if (orderDate != null && !orderDate.equals(order.orderDate)) return false;
 
@@ -179,7 +180,8 @@ public class Order {
         result = 31 * result + customer.hashCode();
         return result;
     }
-
+    
+    //String builder
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();

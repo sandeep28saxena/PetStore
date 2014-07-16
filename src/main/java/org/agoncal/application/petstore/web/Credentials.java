@@ -1,3 +1,4 @@
+//this class sets the attributes for login and password procedures
 package org.agoncal.application.petstore.web;
 
 import javax.enterprise.context.RequestScoped;
