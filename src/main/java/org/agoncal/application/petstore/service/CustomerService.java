@@ -9,7 +9,10 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
+
 import java.io.Serializable;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -55,7 +58,14 @@ public class CustomerService implements Serializable {
 
 		if (customer == null)
 			throw new ValidationException("Customer object is null");
-
+		
+		Date customerDob = customer.getDateOfBirth();
+		
+		if(customerDob ==null){
+			throw new ValidationException("Date of Birth Can't be null");
+		}
+		
+		
 		em.persist(customer);
 
 		return customer;
@@ -117,14 +127,25 @@ public class CustomerService implements Serializable {
 	public Customer updateCustomer(final Customer customer) {
 
 		// Make sure the object is valid
-		if (customer == null)
+		if (customer == null){
+		
 			throw new ValidationException("Customer object is null");
-
-		// Update the object in the database
-		em.merge(customer);
-		// returns it
-		return customer;
+		}
+		else
+		{
+			    	
+	    	// Update the object in the database
+			em.merge(customer);
+			// returns it
+			return customer;
+	    	
+//	    	
+		}		
+//		when customer object is not null.
+		
+				
 	}
+//	End of Customer Method.
 
 	// this method will delete a customer from the database THIS NEEDS TO BE
 	// CHANGED TO AN ADMIN PRIVILAGE.

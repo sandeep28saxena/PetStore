@@ -201,10 +201,12 @@ public class Customer implements Serializable {
     }
 
     public Date getDateOfBirth() {
+    
         return dateOfBirth;
     }
 
     public void setDateOfBirth(Date dateOfBirth) {
+    	    	
         this.dateOfBirth = dateOfBirth;
     }
 

@@ -5,7 +5,8 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-	template="WEB-INF/layouts/template.xhtml">
+	template="WEB-INF/layouts/template.xhtml">,
+
 
 	<ui:define name="title">#{i18n.updateYourAccount}</ui:define>
 
@@ -46,6 +47,7 @@
 				<h:inputText id="dateOfBirth"
 					value="#{accountController.loggedinCustomer.dateOfBirth}">
 					<f:convertDateTime pattern="dd.MM.yyyy" />
+					
 				</h:inputText>
 				<h:message for="dateOfBirth" style="color: red;" />
 
@@ -82,6 +84,7 @@
 				<h:outputText value="*#{i18n.address_country}  :" />
 				<h:inputText id="country"
 					value="#{accountController.loggedinCustomer.homeAddress.country}" />
+					
 				<h:message for="country" style="color: red;" />
 
 			</h:panelGrid>
@@ -93,6 +96,8 @@
 					action="#{accountController.doUpdateAccount}" type="submit" />
 			</div>
 		</h:form>
+		
 
 	</ui:define>
 </ui:composition>
+
