@@ -11,6 +11,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import javax.security.auth.login.LoginContext;
 import javax.security.auth.login.LoginException;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -102,6 +103,17 @@ public class AccountController extends Controller implements Serializable {
 
 		return "createaccount.faces";
 	}
+	
+	
+	/**
+	 * this function will check whether a given string is numeric or not.
+	 * @return boolean
+	 * @author jahidhaque
+	 */
+	public boolean isNumeric(String string) {  
+	    return string.matches("[-+]?\\d*\\.?\\d+");  
+	} 
+//	End of isNumeric.
 
 	// uses loggedin customer to create an instance of create customer in
 	// customer service
@@ -121,6 +133,16 @@ public class AccountController extends Controller implements Serializable {
 			addWarningMessage ("future_date");
         	return null;
 		}
+		
+		String customerFistName = loggedinCustomer.getFirstname();
+		
+		if(isNumeric(customerFistName)){
+			
+			addWarningMessage ("invalidFirstName");
+			return null;
+		}
+		
+		
 		//updates age
         loggedinCustomer.calculateAge();
         //If everything is ok, updates the account information
@@ -158,6 +180,15 @@ public class AccountController extends Controller implements Serializable {
 			addWarningMessage ("future_date");
         	return null;
 		}
+		
+		String customerFistName = loggedinCustomer.getFirstname();
+		
+		if(isNumeric(customerFistName)){
+			
+			addWarningMessage ("invalidFirstName");
+			return null;
+		}
+		
 		//updates age
         loggedinCustomer.calculateAge();
         //If everything is ok, updates the account information
