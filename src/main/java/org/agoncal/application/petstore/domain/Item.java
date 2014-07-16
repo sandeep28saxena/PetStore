@@ -57,6 +57,7 @@ public class Item {
     public static final String SEARCH = "Item.search";
     public static final String FIND_ALL = "Item.findAll";
     public static final String FIND_ALL_CATEGORY = "Item.FindAllCategory";
+    public static final String FIND_ALL_DESCRIPTION= "Item.FindAllDescription";
 
     // ======================================
     // =            Constructors            =
