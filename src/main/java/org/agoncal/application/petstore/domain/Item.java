@@ -19,7 +19,9 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
         @NamedQuery(name = Item.FIND_BY_PRODUCT_ID, query = "SELECT i FROM Item i WHERE i.product.id = :productId"),
         @NamedQuery(name = Item.SEARCH, query = "SELECT i FROM Item i WHERE UPPER(i.name) LIKE :keyword OR UPPER(i.product.name) LIKE :keyword ORDER BY i.product.category.name, i.product.name"),
-        @NamedQuery(name = Item.FIND_ALL, query = "SELECT i FROM Item i")
+        @NamedQuery(name = Item.FIND_ALL, query = "SELECT i FROM Item i"),
+        //select all where category = keyword
+        @NamedQuery(name = Item.FIND_ALL_CATEGORY, query = "SELECT i FROM Item i WHERE UPPER(i.product.category.name) LIKE :keyword ORDER BY i.product.category.name, i.product.name")
 })
 @XmlRootElement
 public class Item {
@@ -54,6 +56,7 @@ public class Item {
     public static final String FIND_BY_PRODUCT_ID = "Item.findByProductId";
     public static final String SEARCH = "Item.search";
     public static final String FIND_ALL = "Item.findAll";
+    public static final String FIND_ALL_CATEGORY = "Item.FindAllCategory";
 
     // ======================================
     // =            Constructors            =

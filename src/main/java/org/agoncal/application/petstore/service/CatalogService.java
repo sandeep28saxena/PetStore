@@ -164,10 +164,22 @@ public class CatalogService implements Serializable {
         TypedQuery<Item> typedQuery = em.createNamedQuery(Item.SEARCH, Item.class);
         typedQuery.setParameter("keyword", "%" + keyword.toUpperCase() + "%");
         
+        TypedQuery<Item> typedQuery2 = em.createNamedQuery(Item.FIND_ALL_CATEGORY, Item.class);
+        typedQuery2.setParameter("keyword", "%" + keyword.toUpperCase() + "%");
+        
         System.out.println("keyword = " + keyword);
         System.out.println("typedQuery.getResultList() = " + typedQuery.getResultList());
+        System.out.println("typedQuery2.getResultList() = " + typedQuery.getResultList());
         
-        return typedQuery.getResultList();
+        //join lists
+        List<Item> results = typedQuery.getResultList();
+        results.addAll(typedQuery2.getResultList());
+        //check for duplicates
+        //for(Item i: typedQuery.getResultList()){
+        	
+        //}
+        
+        return results;
     }
 
     public List<Item> findAllItems() {
