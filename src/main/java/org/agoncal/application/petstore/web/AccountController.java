@@ -19,7 +19,6 @@ import java.util.Date;
  */
 
 
-//test
 @Named
 @SessionScoped
 @Loggable
