@@ -68,6 +68,7 @@ public class SimpleLoginModule implements LoginModule {
 
     }
 
+    //Initilising the call back handler and calling the getCustomerService method when the class initialises.
     @Override
     public void initialize(Subject subject, CallbackHandler callbackHandler, Map<String, ?> stringMap, Map<String, ?> stringMap1) {
         this.callbackHandler = callbackHandler;
@@ -77,27 +78,37 @@ public class SimpleLoginModule implements LoginModule {
     @Override
     public boolean login() throws LoginException {
 
+    	//Underlying Security services.
         NameCallback nameCallback = new NameCallback("Name : ");
         PasswordCallback passwordCallback = new PasswordCallback("Password : ", false);
         try {
+        	//Get the password and name from the input and assign it to a string
             callbackHandler.handle(new Callback[]{nameCallback, passwordCallback});
             String username = nameCallback.getName();
             String password = new String(passwordCallback.getPassword());
+            //Clear the forms
             nameCallback.setName("");
             passwordCallback.clearPassword();
+            //find the customer with the username and password entered
             Customer customer = customerService.findCustomer(username, password);
-
+            
+            //If customer doesn't exist
             if (customer == null) {
+            	//Throw an authentication failed exception 
                 throw new LoginException("Authentication failed");
             }
-
+            //Otherwise return the customer (Allow them to login)
             return true;
+            
         } catch (Exception e) {
+        	//catch any exception and print it to the stack.
             e.printStackTrace();
             throw new LoginException(e.getMessage());
         }
     }
 
+    
+    //Booleans to commit, abort and logout.
     @Override
     public boolean commit() throws LoginException {
         return true;
