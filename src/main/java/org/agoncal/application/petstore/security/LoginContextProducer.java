@@ -19,7 +19,7 @@ public class LoginContextProducer {
     // ======================================
     // =             Attributes             =
     // ======================================
-//this injects a callback handler
+//this injects a callback handler rkre
     @Inject
     private SimpleCallbackHandler callbackHandler;
 
