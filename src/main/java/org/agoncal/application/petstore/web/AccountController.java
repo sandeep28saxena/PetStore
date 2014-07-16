@@ -208,6 +208,23 @@ public class AccountController extends Controller implements Serializable {
     }
 
     public String doCreateCustomer() {
+    	Date dateString = loggedinCustomer.getDateOfBirth();
+		Date today = new Date();
+		//Checks if DOB is set to the future date
+		if (dateString.after(today))
+		{
+			addWarningMessage ("Future date declared");
+        	return null;
+		}
+		//DOB input is empty
+        if (dateString.equals(null))
+        {
+        	addWarningMessage ("DOB field needs to be filled in");
+        	//breaks the update action
+        	return null;
+        }
+        loggedinCustomer.calculateAge();
+        //If everything is ok, updates the account information
         loggedinCustomer = customerService.createCustomer(loggedinCustomer);
         return "main.faces";
     }
@@ -240,6 +257,7 @@ public class AccountController extends Controller implements Serializable {
         	//breaks the update action
         	return null;
         }
+        loggedinCustomer.calculateAge();
         //If everything is ok, updates the account information
         loggedinCustomer = customerService.updateCustomer(loggedinCustomer);
         addInformationMessage("account_updated");
