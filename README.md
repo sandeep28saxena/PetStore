@@ -9,7 +9,7 @@
 
 There are multiple purposes for the assigning of this exercise and they include;
 
-	- To gain skills using Github to work concurrently.
+	- To gain skills using GitHub to work concurrently.
 	- To locate and provide solutions to services that are not working correctly / efficiently.
 
 ### ChangeLog

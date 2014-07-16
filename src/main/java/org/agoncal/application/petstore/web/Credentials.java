@@ -11,12 +11,15 @@ import javax.inject.Named;
 
 @Named
 @RequestScoped
+
+//Class for Credentials
 public class Credentials {
 
     // ======================================
     // =             Attributes             =
     // ======================================
 
+	//Creates the attributes associated with the login credentials.
     private String login;
     private String password;
     private String password2;
