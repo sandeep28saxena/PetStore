@@ -16,8 +16,6 @@ import java.util.List;
  *         http://www.antoniogoncalves.org
  *         --
  */
-//test stuff - nath
-
 
 @Named
 //@RequestScoped TODO should be request scoped
@@ -51,7 +49,7 @@ public class CatalogController extends Controller implements Serializable {
         products = catalogService.findProducts(categoryName);
         return "showproducts.faces";
     }
-
+    
     public String doFindItems() {
         product = catalogService.findProduct(productId);
         items = catalogService.findItems(productId);
