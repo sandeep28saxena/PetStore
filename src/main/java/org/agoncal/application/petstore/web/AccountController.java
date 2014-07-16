@@ -24,7 +24,7 @@ import java.util.Date;
 @CatchException
 public class AccountController extends Controller implements Serializable {
 
-<<<<<<< HEAD
+
 	// ======================================
 	// = Attributes =
 	// ======================================
@@ -141,7 +141,7 @@ public class AccountController extends Controller implements Serializable {
 	public void setLoggedinCustomer(Customer loggedinCustomer) {
 		this.loggedinCustomer = loggedinCustomer;
 	}
-=======
+
     // ======================================
     // =             Attributes             =
     // ======================================
@@ -257,5 +257,5 @@ public class AccountController extends Controller implements Serializable {
     public void setLoggedinCustomer(Customer loggedinCustomer) {
         this.loggedinCustomer = loggedinCustomer;
     }
->>>>>>> FETCH_HEAD
+
 }
