@@ -13,103 +13,127 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * @author Antonio Goncalves
- *         http://www.antoniogoncalves.org
- *         --
+ * @author Antonio Goncalves http://www.antoniogoncalves.org --
  */
 
 @Stateless
 @Loggable
 public class CustomerService implements Serializable {
 
-    // ======================================
-    // =             Attributes             =
-    // ======================================
+	// ======================================
+	// = Attributes =
+	// ======================================
 
-    @Inject
-    private EntityManager em;
+	@Inject
+	private EntityManager em;
 
-    // ======================================
-    // =              Public Methods        =
-    // ======================================
+	// ======================================
+	// = Public Methods =
+	// ======================================
 
-    public boolean doesLoginAlreadyExist(final String login) {
-    
-    	//If login is null, throw a validation exception.
-        if (login == null)
-            throw new ValidationException("Login cannot be null");
+	public boolean doesLoginAlreadyExist(final String login) {
 
-        // Login has to be unique
-        TypedQuery<Customer> typedQuery = em.createNamedQuery(Customer.FIND_BY_LOGIN, Customer.class);
-        typedQuery.setParameter("login", login);
-        try {
-            typedQuery.getSingleResult();
-            return true;
-        } catch (NoResultException e) {
-            return false;
-        }
-    }
+		// If login is null, throw a validation exception.
+		if (login == null)
+			throw new ValidationException("Login cannot be null");
 
-    public Customer createCustomer(final Customer customer) {
+		// Login has to be unique
+		TypedQuery<Customer> typedQuery = em.createNamedQuery(
+				Customer.FIND_BY_LOGIN, Customer.class);
+		typedQuery.setParameter("login", login);
+		try {
+			typedQuery.getSingleResult();
+			return true;
+		} catch (NoResultException e) {
+			return false;
+		}
+	}
 
-        if (customer == null)
-            throw new ValidationException("Customer object is null");
+	// This will enter a new customer and persist a new instance of customer to
+	// the database
+	public Customer createCustomer(final Customer customer) {
 
-        em.persist(customer);
+		if (customer == null)
+			throw new ValidationException("Customer object is null");
 
-        return customer;
-    }
+		em.persist(customer);
 
-    public Customer findCustomer(final String login) {
+		return customer;
+	}
 
-        if (login == null)
-            throw new ValidationException("Invalid login");
+	// this method searches for the completed login USERNAME and checks it
+	// against the database, parameter is the String that has been entered into
+	public Customer findCustomer(final String login) {
 
-        TypedQuery<Customer> typedQuery = em.createNamedQuery(Customer.FIND_BY_LOGIN, Customer.class);
-        typedQuery.setParameter("login", login);
+		// if they haven't typed anything it will be an invalid login
+		if (login == null)
+			throw new ValidationException("Invalid login");
 
-        try {
-            return typedQuery.getSingleResult();
-        } catch (NoResultException e) {
-            return null;
-        }
-    }
+		// this creates a query using the entity manager searching customer
+		// using a FIND_BY_LOGIN named query
+		TypedQuery<Customer> typedQuery = em.createNamedQuery(
+				Customer.FIND_BY_LOGIN, Customer.class);
+		typedQuery.setParameter("login", login);
 
-    public Customer findCustomer(final String login, final String password) {
+		// try returning it
+		try {
+			return typedQuery.getSingleResult();
 
-        if (login == null)
-            throw new ValidationException("Invalid login");
-        if (password == null)
-            throw new ValidationException("Invalid password");
+			// or just return nothing if the query doesn't return anything
+		} catch (NoResultException e) {
+			return null;
+		}
+	}
 
-        TypedQuery<Customer> typedQuery = em.createNamedQuery(Customer.FIND_BY_LOGIN_PASSWORD, Customer.class);
-        typedQuery.setParameter("login", login);
-        typedQuery.setParameter("password", password);
+	// this one searches BOTH USERNAME AND PASSWORD with a view to logging
+	// someone in
+	public Customer findCustomer(final String login, final String password) {
 
-        return typedQuery.getSingleResult();
-    }
+		// if they don't type in anything it will return INVALID LOGIN
+		if (login == null)
+			throw new ValidationException("Invalid login");
 
-    public List<Customer> findAllCustomers() {
-        TypedQuery<Customer> typedQuery = em.createNamedQuery(Customer.FIND_ALL, Customer.class);
-        return typedQuery.getResultList();
-    }
+		// if they don't type in a password it will return INVALID PASSWORD
+		if (password == null)
+			throw new ValidationException("Invalid password");
 
-    public Customer updateCustomer(final Customer customer) {
+		// this uses a names query from FIND_BY_LOGIN_PASSWORD
+		TypedQuery<Customer> typedQuery = em.createNamedQuery(
+				Customer.FIND_BY_LOGIN_PASSWORD, Customer.class);
+		typedQuery.setParameter("login", login);
+		typedQuery.setParameter("password", password);
 
-        // Make sure the object is valid
-        if (customer == null)
-            throw new ValidationException("Customer object is null");
+		return typedQuery.getSingleResult();
+	}
 
-        // Update the object in the database
-        em.merge(customer);
+	// this method will retrieve all the customers in customer class
+	public List<Customer> findAllCustomers() {
+		TypedQuery<Customer> typedQuery = em.createNamedQuery(
+				Customer.FIND_ALL, Customer.class);
+		return typedQuery.getResultList();
+	}
+	
+	//Updates customer account and its variables, accesses the database
+	public Customer updateCustomer(final Customer customer) {
 
-        return customer;
-    }
+		// Make sure the object is valid
+		if (customer == null)
+			throw new ValidationException("Customer object is null");
 
-    public void removeCustomer(final Customer customer) {
-        if (customer == null)
-            throw new ValidationException("Customer object is null");
+		// Update the object in the database
+		em.merge(customer);
+		// returns it
+		return customer;
+	}
 
-        em.remove(em.merge(customer));
-    }
+	// this method will delete a customer from the database THIS NEEDS TO BE
+	// CHANGED TO AN ADMIN PRIVILAGE.
+	public void removeCustomer(final Customer customer) {
+
+		// if there isn't a customer there to start with it will be null
+		if (customer == null)
+			throw new ValidationException("Customer object is null");
+
+		em.remove(em.merge(customer));
+	}
 }

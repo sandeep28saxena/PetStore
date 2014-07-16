@@ -105,7 +105,8 @@ public class AccountController extends Controller implements Serializable {
         addInformationMessage("been_loggedout");
         return "main.faces";
     }
-
+    //Inisiates update account and when it is done prints account updated
+    //Accesses customerService class and updateCustomer method, passes the loggedinCustomer variable
     public String doUpdateAccount() {
         loggedinCustomer = customerService.updateCustomer(loggedinCustomer);
         addInformationMessage("account_updated");

@@ -40,9 +40,12 @@ public class SimpleLoginModule implements LoginModule {
     // =          Business methods          =
     // ======================================
 
+    //instantiates getCustomerService
     private CustomerService getCustomerService() {
         if (customerService != null) {
             return customerService;
+            
+            //if nothing has been saved to CustomerService it will just return and not get stuck
         }
         try {
             Context context = new InitialContext();
