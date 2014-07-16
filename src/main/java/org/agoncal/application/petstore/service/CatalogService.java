@@ -167,19 +167,27 @@ public class CatalogService implements Serializable {
         TypedQuery<Item> typedQuery2 = em.createNamedQuery(Item.FIND_ALL_CATEGORY, Item.class);
         typedQuery2.setParameter("keyword", "%" + keyword.toUpperCase() + "%");
         
+        TypedQuery<Item> typedQuery3 = em.createNamedQuery(Item.FIND_ALL_DESCRIPTION, Item.class);
+        typedQuery3.setParameter("keyword", "%" + keyword.toUpperCase() + "%");
+        
         System.out.println("keyword = " + keyword);
         System.out.println("typedQuery.getResultList() = " + typedQuery.getResultList());
         System.out.println("typedQuery2.getResultList() = " + typedQuery.getResultList());
+        System.out.println("typedQuery3.getResultList() =" + typedQuery.getResultList());
         
         //join lists
         List<Item> results = typedQuery.getResultList();
-        
-        //results.addAll(typedQuery2.getResultList());
-        
-        //check for duplicates
-        for(Item i: typedQuery2.getResultList()){ 
+        //join lists and check for duplicates - item and category searches
+        results = checkForDuplicates(typedQuery.getResultList(), typedQuery2.getResultList());
+        List<Item> results1 = checkForDuplicates(results, typedQuery3.getResultList());
+        return results1;
+    }
+    
+    private List<Item> checkForDuplicates(List<Item> originalList, List<Item> list2){
+    	List<Item> results= originalList;
+    	for(Item i: list2){ 
         	boolean exists = false;
-        	for(Item j: typedQuery.getResultList()){
+        	for(Item j: originalList){
         		//check if Item j already exists
         		if(i.equals(j)){
         			exists = true;
