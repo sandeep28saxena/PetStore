@@ -171,15 +171,18 @@ public class CatalogService implements Serializable {
         System.out.println("typedQuery.getResultList() = " + typedQuery.getResultList());
         System.out.println("typedQuery2.getResultList() = " + typedQuery.getResultList());
         
-        //join lists
-        List<Item> results = typedQuery.getResultList();
+        //join lists and check for duplicates - item and category searches
+        List<Item> results = checkForDuplicates(typedQuery.getResultList(), typedQuery2.getResultList());
         
-        //results.addAll(typedQuery2.getResultList());
         
-        //check for duplicates
-        for(Item i: typedQuery2.getResultList()){ 
+        return results;
+    }
+    
+    private List<Item> checkForDuplicates(List<Item> originalList, List<Item> list2){
+    	List<Item> results= originalList;
+    	for(Item i: list2){ 
         	boolean exists = false;
-        	for(Item j: typedQuery.getResultList()){
+        	for(Item j: originalList){
         		//check if Item j already exists
         		if(i.equals(j)){
         			exists = true;
@@ -191,6 +194,8 @@ public class CatalogService implements Serializable {
         	}
         }
         return results;
+    	
+    	
     }
 
     public List<Item> findAllItems() {
