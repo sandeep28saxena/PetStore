@@ -17,7 +17,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
  *         http://www.antoniogoncalves.org
  *         --
  */
-
+//Validation, checking for size and not null.
 @NotNull
 @Size(min = 1, max = 10)
 @Target({METHOD, FIELD})
@@ -29,10 +29,11 @@ public @interface Login {
     // ======================================
     // =             Attributes             =
     // ======================================
-
     String message() default "{validator.invalidLogin}";
-
+    
+    //Method to returns the classes.
     Class<?>[] groups() default {};
 
+    //Casts this as a sub class.
     Class<? extends Payload>[] payload() default {};
 }

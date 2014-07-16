@@ -48,13 +48,18 @@ public class SimpleLoginModule implements LoginModule {
             //if nothing has been saved to CustomerService it will just return and not get stuck
         }
         try {
+        	//Set up a try catch, creating a context. Looks up bean manager for use in the application
             Context context = new InitialContext();
             beanManager = (BeanManager) context.lookup("java:comp/BeanManager");
+            //Iterates through the Customer Service class beans.
             Bean<?> bean = beanManager.getBeans(CustomerService.class).iterator().next();
+            //Provides operations that are used by the Contextual implementation during instance creation and destruction.
             CreationalContext cc = beanManager.createCreationalContext(bean);
+            //Gets the reference of of the bean from the customer service class.
             customerService = (CustomerService) beanManager.getReference(bean, CustomerService.class, cc);
 
         } catch (NamingException e) {
+        	//Naming exception catch
             e.printStackTrace();
             throw new RuntimeException(e);
         }
