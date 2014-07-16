@@ -170,9 +170,13 @@ public class CatalogService implements Serializable {
         TypedQuery<Item> typedQuery3 = em.createNamedQuery(Item.FIND_ALL_DESCRIPTION, Item.class);
         typedQuery3.setParameter("keyword", "%" + keyword.toUpperCase() + "%");
         
+        TypedQuery<Item> typedQuery4 = em.createNamedQuery(Item.FIND_ALL_DESCRIPTION_ITEM, Item.class);
+        typedQuery4.setParameter("keyword", "%" + keyword.toUpperCase() + "%");
+        
         System.out.println("keyword = " + keyword);
         System.out.println("typedQuery.getResultList() = " + typedQuery.getResultList());
         System.out.println("typedQuery2.getResultList() = " + typedQuery.getResultList());
+        System.out.println("typedQuery3.getResultList() =" + typedQuery.getResultList());
         System.out.println("typedQuery3.getResultList() =" + typedQuery.getResultList());
         
         //join lists
@@ -180,7 +184,8 @@ public class CatalogService implements Serializable {
         //join lists and check for duplicates - item and category searches
         results = checkForDuplicates(typedQuery.getResultList(), typedQuery2.getResultList());
         List<Item> results1 = checkForDuplicates(results, typedQuery3.getResultList());
-        return results1;
+        List<Item> results2 = checkForDuplicates(results1, typedQuery4.getResultList());
+        return results2;
     }
     
     private List<Item> checkForDuplicates(List<Item> originalList, List<Item> list2){
