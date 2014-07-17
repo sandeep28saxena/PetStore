@@ -217,5 +217,4 @@ public class AccountController extends Controller implements Serializable {
 
 	public void setLoggedinCustomer(Customer loggedinCustomer) {
 		this.loggedinCustomer = loggedinCustomer;
-	}
-}
+	}}

@@ -1,8 +1,5 @@
 package org.agoncal.application.petstore.service;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.agoncal.application.petstore.domain.*;
 import org.agoncal.application.petstore.util.Loggable;
 
@@ -135,23 +132,7 @@ public class DBPopulator {
         Product finch = new Product("Finch", "Great stress reliever", bird);
         bird.addProduct(amazonParrot);
         bird.addProduct(finch);
-        
-        //Stock
-        List<Stock> stocks = new ArrayList<Stock>();//list to hold all the stock objects
-        //collect categories together
-        List<Category> categories = new ArrayList<Category>();
-        categories.add(fish);categories.add(dog);categories.add(reptile);categories.add(cat);categories.add(bird);
-        //assign some stock to each
-        for(Category c: categories){
-        	for(Product p: c.getProducts()){
-        		for(Item i: p.getItems()){
-        			Stock stock = new Stock(i,10,3);
-        			stocks.add(stock);
-        			
-        		}
-        	}
-        }
-        
+
         // Items
         Item largeAngelfish = new Item("Large", 10.00f, "fish1.jpg", angelfish, "Lorem ipsum ");
         Item thootlessAngelfish = new Item("Thootless", 10.00f, "fish1.jpg", angelfish, "Lorem ipsum ");
