@@ -38,7 +38,7 @@ public class CustomerService implements Serializable {
 
 		// If login is null, throw a validation exception.
 		if (login == null)
-			throw new ValidationException("Login cannot be null");
+			 throw new ValidationException("Login cannot be null");
 
 		// Login has to be unique
 		TypedQuery<Customer> typedQuery = em.createNamedQuery(

@@ -70,6 +70,7 @@ public class AccountController extends Controller implements Serializable {
 			addWarningMessage("pwd_filled");
 			return null;
 		}
+		
 
 		loginContext.login();
 		loggedinCustomer = customerService.findCustomer(credentials.getLogin());
