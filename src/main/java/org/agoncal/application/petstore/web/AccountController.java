@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-package org.agoncal.application.petstore.web;
-=======
-
 package org.agoncal.application.petstore.web;
 
 import org.agoncal.application.petstore.domain.Customer;
@@ -23,8 +19,6 @@ import java.util.Date;
  * @author Antonio Goncalves http://www.antoniogoncalves.org --
  */
 
-
->>>>>>> c8eed4c7cfc60f581256f910dea949d9be0ef917
 
 import org.agoncal.application.petstore.domain.Customer;
 import org.agoncal.application.petstore.service.CustomerService;
@@ -243,9 +237,6 @@ public class AccountController extends Controller implements Serializable {
 
 	public void setLoggedinCustomer(Customer loggedinCustomer) {
 		this.loggedinCustomer = loggedinCustomer;
-<<<<<<< HEAD
-	}}
-=======
 	}
-}
->>>>>>> c8eed4c7cfc60f581256f910dea949d9be0ef917
+	}
+	
