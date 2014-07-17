@@ -109,7 +109,6 @@ public class AccountController extends Controller implements Serializable {
 	/**
 	 * this function will check whether a given string is numeric or not.
 	 * @return boolean
-	 * @author jahidhaque
 	 */
 	public boolean isNumeric(String string) {  
 	    return string.matches("[-+]?\\d*\\.?\\d+");  
