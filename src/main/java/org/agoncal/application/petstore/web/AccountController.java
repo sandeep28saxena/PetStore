@@ -113,15 +113,17 @@ public class AccountController extends Controller implements Serializable {
 	public boolean isNumeric(String string) {  
 	    return string.matches("[-+]?\\d*\\.?\\d+");  
 	} 
+	
 //	End of isNumeric.
 
 	// uses loggedin customer to create an instance of create customer in
 	// customer service
 	public String doCreateCustomer() {
+		
 		Date dateString = loggedinCustomer.getDateOfBirth();
 		Date today = new Date();
-		String lastName = loggedinCustomer.getLastname();
-		String customerFistName = loggedinCustomer.getFirstname();
+		String CustomerLastName = loggedinCustomer.getLastname();
+		String CustomerFirstName = loggedinCustomer.getFirstname();
 		//DOB input is empty
         if (dateString == null)
         {
@@ -136,18 +138,15 @@ public class AccountController extends Controller implements Serializable {
         	return null;
 		}
 		
-		if(isNumeric(customerFistName)){
-			
+		if(isNumeric(CustomerFirstName)){
 			addWarningMessage ("invalidFirstName");
 			return null;
 		}
 		
-		if(isNumeric(lastName)){
-			
+		if(isNumeric(CustomerLastName)){
 			addWarningMessage ("invalidLastName");
 			return null;
 		}
-		
 		//updates age
         loggedinCustomer.calculateAge();
         //If everything is ok, updates the account information
@@ -172,8 +171,9 @@ public class AccountController extends Controller implements Serializable {
 	public String doUpdateAccount() {
 		Date dateString = loggedinCustomer.getDateOfBirth();
 		Date today = new Date();
-		String customerFistName = loggedinCustomer.getFirstname();
-		String lastName = loggedinCustomer.getLastname();
+		String CustomerFistName = loggedinCustomer.getFirstname();
+		String CustomerLastName = loggedinCustomer.getLastname();
+		//Checking validation
 		//DOB input is empty
         if (dateString == null)
         {
@@ -182,28 +182,30 @@ public class AccountController extends Controller implements Serializable {
         	return null;
         }
       //Checks if DOB is set to the future date
-		if (dateString.after(today))
+        else if (dateString.after(today))
 		{
 			addWarningMessage ("future_date");
         	return null;
 		}
 		
-		if(isNumeric(customerFistName)){
+        else if(isNumeric(CustomerFistName)){
 			addWarningMessage ("invalidFirstName");
 			return null;
 		}
 		
-		if(isNumeric(lastName)){
+        else if(isNumeric(CustomerLastName)){
 			addWarningMessage ("invalidLastName");
 			return null;
 		}
-		
+        else
+        {
 		//updates age
         loggedinCustomer.calculateAge();
         //If everything is ok, updates the account information
 		loggedinCustomer = customerService.updateCustomer(loggedinCustomer);
 		addInformationMessage("account_updated");
 		return "showaccount.faces";
+        }
 	}
 
 	public boolean isLoggedIn() {
