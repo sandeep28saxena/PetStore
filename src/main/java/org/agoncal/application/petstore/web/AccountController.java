@@ -20,26 +20,6 @@ import java.util.Date;
  */
 
 
-import org.agoncal.application.petstore.domain.Customer;
-import org.agoncal.application.petstore.service.CustomerService;
-import org.agoncal.application.petstore.util.Loggable;
-
-import javax.enterprise.context.Conversation;
-import javax.enterprise.context.SessionScoped;
-import javax.enterprise.inject.Produces;
-import javax.inject.Inject;
-import javax.inject.Named;
-import javax.security.auth.login.LoginContext;
-import javax.security.auth.login.LoginException;
-
-import java.io.Serializable;
-import java.util.Date;
-
-/**
- * @author Antonio Goncalves http://www.antoniogoncalves.org --
- */
-
-
 @Named
 @SessionScoped
 @Loggable
@@ -238,5 +218,8 @@ public class AccountController extends Controller implements Serializable {
 	public void setLoggedinCustomer(Customer loggedinCustomer) {
 		this.loggedinCustomer = loggedinCustomer;
 	}
-	}
+	
+	
+}
+//End of Class.
 	
