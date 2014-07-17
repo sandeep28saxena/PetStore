@@ -70,6 +70,7 @@ public class AccountController extends Controller implements Serializable {
 			addWarningMessage("pwd_filled");
 			return null;
 		}
+		
 
 		loginContext.login();
 		loggedinCustomer = customerService.findCustomer(credentials.getLogin());
@@ -108,7 +109,6 @@ public class AccountController extends Controller implements Serializable {
 	/**
 	 * this function will check whether a given string is numeric or not.
 	 * @return boolean
-	 * @author jahidhaque
 	 */
 	public boolean isNumeric(String string) {  
 	    return string.matches("[-+]?\\d*\\.?\\d+");  
@@ -120,6 +120,8 @@ public class AccountController extends Controller implements Serializable {
 	public String doCreateCustomer() {
 		Date dateString = loggedinCustomer.getDateOfBirth();
 		Date today = new Date();
+		String lastName = loggedinCustomer.getLastname();
+		String customerFistName = loggedinCustomer.getFirstname();
 		//DOB input is empty
         if (dateString == null)
         {
@@ -134,14 +136,17 @@ public class AccountController extends Controller implements Serializable {
         	return null;
 		}
 		
-		String customerFistName = loggedinCustomer.getFirstname();
-		
 		if(isNumeric(customerFistName)){
 			
 			addWarningMessage ("invalidFirstName");
 			return null;
 		}
 		
+		if(isNumeric(lastName)){
+			
+			addWarningMessage ("invalidLastName");
+			return null;
+		}
 		
 		//updates age
         loggedinCustomer.calculateAge();
@@ -167,6 +172,8 @@ public class AccountController extends Controller implements Serializable {
 	public String doUpdateAccount() {
 		Date dateString = loggedinCustomer.getDateOfBirth();
 		Date today = new Date();
+		String customerFistName = loggedinCustomer.getFirstname();
+		String lastName = loggedinCustomer.getLastname();
 		//DOB input is empty
         if (dateString == null)
         {
@@ -181,11 +188,13 @@ public class AccountController extends Controller implements Serializable {
         	return null;
 		}
 		
-		String customerFistName = loggedinCustomer.getFirstname();
-		
 		if(isNumeric(customerFistName)){
-			
 			addWarningMessage ("invalidFirstName");
+			return null;
+		}
+		
+		if(isNumeric(lastName)){
+			addWarningMessage ("invalidLastName");
 			return null;
 		}
 		

@@ -161,16 +161,16 @@ public class CatalogService implements Serializable {
         if (keyword == null)
             keyword = "";
 
-        TypedQuery<Item> typedQuery = em.createNamedQuery(Item.SEARCH, Item.class);
+        TypedQuery<Item> typedQuery = em.createNamedQuery(Item.SEARCH, Item.class); //searches for item name
         typedQuery.setParameter("keyword", "%" + keyword.toUpperCase() + "%");
         
-        TypedQuery<Item> typedQuery2 = em.createNamedQuery(Item.FIND_ALL_CATEGORY, Item.class);
+        TypedQuery<Item> typedQuery2 = em.createNamedQuery(Item.FIND_ALL_CATEGORY, Item.class); //searches by category
         typedQuery2.setParameter("keyword", "%" + keyword.toUpperCase() + "%");
         
-        TypedQuery<Item> typedQuery3 = em.createNamedQuery(Item.FIND_ALL_DESCRIPTION, Item.class);
+        TypedQuery<Item> typedQuery3 = em.createNamedQuery(Item.FIND_ALL_DESCRIPTION, Item.class); //searches by description
         typedQuery3.setParameter("keyword", "%" + keyword.toUpperCase() + "%");
         
-        TypedQuery<Item> typedQuery4 = em.createNamedQuery(Item.FIND_ALL_DESCRIPTION_ITEM, Item.class);
+        TypedQuery<Item> typedQuery4 = em.createNamedQuery(Item.FIND_ALL_DESCRIPTION_ITEM, Item.class); //searches by description of item
         typedQuery4.setParameter("keyword", "%" + keyword.toUpperCase() + "%");
         
         System.out.println("keyword = " + keyword);
@@ -183,7 +183,9 @@ public class CatalogService implements Serializable {
         List<Item> results = typedQuery.getResultList();
         //join lists and check for duplicates - item and category searches
         results = checkForDuplicates(typedQuery.getResultList(), typedQuery2.getResultList());
+        //join lists and check for duplicates - description and previous list
         List<Item> results1 = checkForDuplicates(results, typedQuery3.getResultList());
+        //join lists and check for duplicates - item description and previous list
         List<Item> results2 = checkForDuplicates(results1, typedQuery4.getResultList());
         return results2;
     }
