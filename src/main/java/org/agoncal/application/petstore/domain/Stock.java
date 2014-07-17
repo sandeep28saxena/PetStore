@@ -11,33 +11,36 @@ import javax.xml.bind.annotation.XmlTransient;
 
 @Entity
 @NamedQueries({
-	
+	//add to this later. This is retrieving stock data
 })
 @XmlRootElement
 
 public class Stock {
 @Id
 @OneToOne
-@JoinColumn(name="prod_fk", nullable=false)
+@JoinColumn(name="prod_fk", nullable=false) 
+// When we do persistence, Stock will use product as a foreign key
 @XmlTransient
 private Item item;
 
+//Stock level variable. Can not be null because we need to know how much is in stock.
 @Column(nullable=false)
 private int stockLevel;
 
+//How much of the stock is already sold. Needed for persistence calculations
 @Column(nullable=false)
 private int stockSold;
 
 public Stock(){
 	
 }
-
+//constructor for Stock
 public Stock(Item item, int stockLevel, int stockSold){
 	this.item=item;
 	this.stockLevel=stockLevel;
 	this.stockSold=stockSold;
 }
-
+//getters and setters for Stock
 public Item getItem() {
 	return item;
 }
@@ -69,6 +72,8 @@ public boolean equals(Object o) {
     Stock stock = (Stock) o;
     return true;
 }
+
+//String builder. Alerts us what the current values of our variables are.
 @Override
 public String toString() {
     final StringBuilder sb = new StringBuilder();
@@ -81,3 +86,4 @@ public String toString() {
 }
 
 }
+
