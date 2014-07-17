@@ -14,7 +14,9 @@ There are multiple purposes for the assigning of this exercise and they include;
 
 ### ChangeLog
 
-	- To be updated (15/07/14)
+	- Fixed Search by Category [16/07/2014]
+	- Fixed Age update, D.o.B issues. [16/07/2014]
+	- Fixed last and first name validation [16/07/2014]
 
 # Application - Petstore Java EE 6
 
