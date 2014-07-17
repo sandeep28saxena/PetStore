@@ -36,7 +36,8 @@ public class ExceptionInterceptor implements Serializable {
 
     // TODO to refactor with Controller methods
     protected void addErrorMessage(String message) {
+    	//retrieves the current page UI and adds an error message to the top of it
         FacesContext context = FacesContext.getCurrentInstance();
-        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, message, null));
+        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, message, message));
     }
 }
