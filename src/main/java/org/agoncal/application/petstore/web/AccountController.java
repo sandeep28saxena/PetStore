@@ -1,4 +1,30 @@
+<<<<<<< HEAD
 package org.agoncal.application.petstore.web;
+=======
+
+package org.agoncal.application.petstore.web;
+
+import org.agoncal.application.petstore.domain.Customer;
+import org.agoncal.application.petstore.service.CustomerService;
+import org.agoncal.application.petstore.util.Loggable;
+
+import javax.enterprise.context.Conversation;
+import javax.enterprise.context.SessionScoped;
+import javax.enterprise.inject.Produces;
+import javax.inject.Inject;
+import javax.inject.Named;
+import javax.security.auth.login.LoginContext;
+import javax.security.auth.login.LoginException;
+
+import java.io.Serializable;
+import java.util.Date;
+
+/**
+ * @author Antonio Goncalves http://www.antoniogoncalves.org --
+ */
+
+
+>>>>>>> c8eed4c7cfc60f581256f910dea949d9be0ef917
 
 import org.agoncal.application.petstore.domain.Customer;
 import org.agoncal.application.petstore.service.CustomerService;
@@ -217,4 +243,9 @@ public class AccountController extends Controller implements Serializable {
 
 	public void setLoggedinCustomer(Customer loggedinCustomer) {
 		this.loggedinCustomer = loggedinCustomer;
+<<<<<<< HEAD
 	}}
+=======
+	}
+}
+>>>>>>> c8eed4c7cfc60f581256f910dea949d9be0ef917
