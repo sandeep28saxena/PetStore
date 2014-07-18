@@ -15,3 +15,4 @@ rebel.xml
 .settings
 WebContent
 projectFilesBackup*
+target/m2e-wtp/web-resources/META-INF/MANIFEST.MF
