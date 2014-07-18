@@ -5,10 +5,16 @@
       http://java.sun.com/xml/ns/javaee/beans_1_0.xsd">
 
 	<interceptors>
+<<<<<<< HEAD
 		
 		
 
 
 	</interceptors><class>org.agoncal.application.petstore.web.ExceptionInterceptor</class><class>org.agoncal.application.petstore.util.LoggingInterceptor</class>
+=======
+		<class>org.agoncal.application.petstore.util.LoggingInterceptor</class>
+		<class>org.agoncal.application.petstore.web.ExceptionInterceptor</class>
+	</interceptors>
+>>>>>>> bac9eb3a70fe841836d23c2b229cd0caac891674
 
 </beans>
