@@ -14,6 +14,9 @@ rebel.xml
 .project
 .settings
 WebContent
+<<<<<<< HEAD
 projectFilesBackup*
 src/main/java/org/agoncal/application/petstore/web/AccountController.java
 /target/
+=======
+>>>>>>> fbfd4f6e077a3eb60028d5e2c7806c719dbbf750
