@@ -1,21 +1,5 @@
-<<<<<<< HEAD
-Manifest-Version: 1.0
-Build-Jdk: 1.7.0_60
-Built-By: nathanmclean
-Created-By: Maven Integration for Eclipse
-
-=======
-<<<<<<< HEAD
 Manifest-Version: 1.0
 Built-By: spinx_000
 Build-Jdk: 1.8.0_05
 Created-By: Maven Integration for Eclipse
 
-=======
-Manifest-Version: 1.0
-Built-By: spinx_000
-Build-Jdk: 1.8.0_05
-Created-By: Maven Integration for Eclipse
-
->>>>>>> origin/master
->>>>>>> 9f7aed80fa51cf68fd0735169bb6d5654a6bdd85
