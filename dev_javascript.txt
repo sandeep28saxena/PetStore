@@ -1,0 +1,3 @@
+Can't find Dev's JavaScript functions Anywhere!!
+	Where is the JavaScript file
+	Its not in the showaccount.xhtml or updateaccount.xhtml	

@@ -1,0 +1,22 @@
+.DS_Store
+.idea
+*.vpdm
+*.log
+*.iml
+vpproject
+target
+*.ipr
+*.iws
+rebel.xml
+*DB
+*.dat
+.classpath
+.project
+.settings
+WebContent
+<<<<<<< HEAD
+projectFilesBackup*
+=======
+projectFilesBackup*
+target/m2e-wtp/web-resources/META-INF/MANIFEST.MF
+>>>>>>> 9f7aed80fa51cf68fd0735169bb6d5654a6bdd85

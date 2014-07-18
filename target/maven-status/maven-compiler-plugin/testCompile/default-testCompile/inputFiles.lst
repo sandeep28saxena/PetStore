@@ -1,0 +1,11 @@
+/Users/nathanmclean/Documents/workspace/PetStore/src/test/java/org/agoncal/application/petstore/service/CustomerServiceIT.java
+/Users/nathanmclean/Documents/workspace/PetStore/src/test/java/org/agoncal/application/petstore/domain/CustomerIT.java
+/Users/nathanmclean/Documents/workspace/PetStore/src/test/java/org/agoncal/application/petstore/domain/AddressIT.java
+/Users/nathanmclean/Documents/workspace/PetStore/src/test/java/org/agoncal/application/petstore/domain/ItemIT.java
+/Users/nathanmclean/Documents/workspace/PetStore/src/test/java/org/agoncal/application/petstore/domain/OrderIT.java
+/Users/nathanmclean/Documents/workspace/PetStore/src/test/java/org/agoncal/application/petstore/domain/CategoryIT.java
+/Users/nathanmclean/Documents/workspace/PetStore/src/test/java/org/agoncal/application/petstore/security/LoginModuleIT.java
+/Users/nathanmclean/Documents/workspace/PetStore/src/test/java/org/agoncal/application/petstore/service/AbstractServiceIT.java
+/Users/nathanmclean/Documents/workspace/PetStore/src/test/java/org/agoncal/application/petstore/domain/ProductIT.java
+/Users/nathanmclean/Documents/workspace/PetStore/src/test/java/org/agoncal/application/petstore/service/OrderServiceIT.java
+/Users/nathanmclean/Documents/workspace/PetStore/src/test/java/org/agoncal/application/petstore/service/CatalogServiceIT.java

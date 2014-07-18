@@ -1,0 +1,22 @@
+# GIT Information
+
+	Use this guide so you know how to pull, push and commit changes!
+	
+# How to push an update
+
+FIRST AND ALWAYS
+	1. GIT pull origin master
+
+ONCE YOU HAVE PULLED AND IT SAYS EITHER ALREADY UP TO DATE, OR CHANGES MADE.
+
+TYPE THIS - Expect to see a RED line of text that shows the file you are wanting to push
+	2. GIT status
+	
+Type the following and add the file path	
+	3. GIT add <filepath>
+	4. GIT commit (you can also add -m "message" or wait for the note pad to open and type it in there.)
+
+Finally once your files are green (type git status again at any time to check if you've added the files)
+
+	5. GIT push origin master
+
