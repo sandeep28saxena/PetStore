@@ -1,0 +1,5 @@
+Common Problem with PetStore App
+
+<class>org.agoncal.application.petstore.util.LoggingInterceptor</class> in file:/Applications/glassfish4/glassfish/domains/domain1/eclipseApps/PetStore/WEB-INF/beans.xml@9 defined in java.lang.ClassNotFoundException: org.agoncal.application.petstore.util.LoggingInterceptor. Please see server.log for more details.
+
+Keep on trying, so far no luck :( :(
