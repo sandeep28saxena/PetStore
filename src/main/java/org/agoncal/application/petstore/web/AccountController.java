@@ -170,8 +170,7 @@ public class AccountController extends Controller implements Serializable {
         loggedinCustomer.calculateAge();
         //If everything is ok, updates the account information
         loggedinCustomer = customerService.updateCustomer(loggedinCustomer);
-        addInformationMessage("account_updated");
-        return "showaccount.faces";
+        return "main.faces";
     }
 //    End of doCreateCustomer.
  
