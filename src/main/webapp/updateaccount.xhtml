@@ -29,7 +29,7 @@
                 <h:inputText id="lastname" value="#{accountController.loggedinCustomer.lastname}"/>
                 <h:message for="lastname" style="color: red;"/>
 
-                <h:outputText value="#{i18n.customer_email}  :"/>
+                <h:outputText value="*#{i18n.customer_email}  :"/>
                 <h:inputText id="email" value="#{accountController.loggedinCustomer.email}"/>
                 <h:message for="email" style="color: red;"/>
 
@@ -37,7 +37,7 @@
                 <h:inputText id="telephone" value="#{accountController.loggedinCustomer.telephone}"/>
                 <h:message for="telephone" style="color: red;"/>
 
-                <h:outputText value="#{i18n.customer_dateOfBirth}  (dd.MM.yyyy):"/>
+                <h:outputText value="*#{i18n.customer_dateOfBirth}  (DD.MM.YYYY):"/>
                 <h:inputText id="dateOfBirth" value="#{accountController.loggedinCustomer.dateOfBirth}">
                     <f:convertDateTime pattern="dd.MM.yyyy"/>
                 </h:inputText>

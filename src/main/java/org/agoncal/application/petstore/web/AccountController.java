@@ -11,7 +11,9 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import javax.security.auth.login.LoginContext;
 import javax.security.auth.login.LoginException;
+
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * @author Antonio Goncalves
@@ -49,7 +51,11 @@ public class AccountController extends Controller implements Serializable {
     // ======================================
     // =              Public Methods        =
     // ======================================
-
+    public boolean isNumeric(String string) {  
+    	 	    return string.matches("[-+]?\\d*\\.?\\d+");  
+    	 	} 
+    	 //	End of isNumeric
+    	 
     public String doLogin() throws LoginException {
         if ("".equals(credentials.getLogin())) {
             addWarningMessage("id_filled");
@@ -86,11 +92,38 @@ public class AccountController extends Controller implements Serializable {
         loggedinCustomer = new Customer();
         loggedinCustomer.setLogin(credentials.getLogin());
         loggedinCustomer.setPassword(credentials.getPassword());
-
         return "createaccount.faces";
     }
 
     public String doCreateCustomer() {
+    	Date dateString = loggedinCustomer.getDateOfBirth();
+  		Date today = new Date();
+  		String customerFirstName = loggedinCustomer.getFirstname();
+  		String customerLastName = loggedinCustomer.getLastname();
+        if (dateString == null)
+        {
+        	addWarningMessage ("empty_date");
+        	//breaks the update action
+        	return null;
+        }
+		//Checks if DOB is set to the future date
+		if (dateString.after(today))
+		{
+			addWarningMessage ("future_date");
+        	return null;
+		}
+		if(isNumeric(customerFirstName)){
+ 			addWarningMessage ("invalidFirstName");
+ 			return null;
+ 		}
+		if(isNumeric(customerLastName)){
+ 			
+ 			addWarningMessage ("invalidLastName");
+ 			return null;
+ 		}
+		//updates age
+		loggedinCustomer.calculateAge();
+		//If everything is ok, updates the account information
         loggedinCustomer = customerService.createCustomer(loggedinCustomer);
         return "main.faces";
     }
@@ -107,6 +140,34 @@ public class AccountController extends Controller implements Serializable {
     }
 
     public String doUpdateAccount() {
+    	Date dateString = loggedinCustomer.getDateOfBirth();
+  		Date today = new Date();
+  		String customerFirstName = loggedinCustomer.getFirstname();
+  		String customerLastName = loggedinCustomer.getLastname();
+    	if (dateString == null)
+        {
+        	addWarningMessage ("empty_date");
+        	//breaks the update action
+        	return null;
+        }
+    	//Checks if DOB is set to the future date
+		if (dateString.after(today))
+		{
+			addWarningMessage ("future_date");
+       	return null;
+		}
+		if(isNumeric(customerFirstName)){
+			 			addWarningMessage ("invalidFirstName");
+			 			return null;
+			 		}
+		if(isNumeric(customerLastName)){
+			 			
+			 			addWarningMessage ("invalidLastName");
+			 			return null;
+			 		}
+		//updates age
+        loggedinCustomer.calculateAge();
+        //If everything is ok, updates the account information
         loggedinCustomer = customerService.updateCustomer(loggedinCustomer);
         addInformationMessage("account_updated");
         return "showaccount.faces";
