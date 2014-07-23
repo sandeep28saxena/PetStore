@@ -3,6 +3,7 @@ package org.agoncal.application.petstore.service;
 import org.agoncal.application.petstore.domain.Category;
 import org.agoncal.application.petstore.domain.Item;
 import org.agoncal.application.petstore.domain.Product;
+import org.agoncal.application.petstore.domain.Stock;
 import org.agoncal.application.petstore.exception.ValidationException;
 import org.agoncal.application.petstore.util.Loggable;
 
@@ -10,6 +11,7 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
+
 import java.io.Serializable;
 import java.util.List;
 
@@ -206,6 +208,12 @@ public class CatalogService implements Serializable {
         	}
         }
         return results;
+    }
+    
+    public List<Stock> findStock(Item item){
+    	TypedQuery<Stock> typedQuery = em.createNamedQuery(Stock.SEARCH, Stock.class); //a stock with this items id
+        typedQuery.setParameter("keyword", "%" + item.getId() + "%");
+    	return typedQuery.getResultList();
     }
 
     public List<Item> findAllItems() {

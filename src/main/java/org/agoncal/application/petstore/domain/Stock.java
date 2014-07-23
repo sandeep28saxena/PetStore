@@ -11,7 +11,8 @@ import javax.xml.bind.annotation.XmlTransient;
 
 @Entity
 @NamedQueries({
-	
+    @NamedQuery(name = Stock.SEARCH, query = "SELECT i FROM Stock i WHERE i.item.id LIKE :keyword ORDER BY i.item.id")
+
 })
 @XmlRootElement
 
@@ -27,6 +28,7 @@ private int stockLevel;
 
 @Column(nullable=false)
 private int stockSold;
+public static final String SEARCH = "Stock.search";
 
 public Stock(){
 	
