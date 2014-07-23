@@ -1,5 +1,7 @@
 package org.agoncal.application.petstore.service;
 
+import java.util.ArrayList;
+
 import org.agoncal.application.petstore.domain.*;
 import org.agoncal.application.petstore.util.Loggable;
 
@@ -87,6 +89,10 @@ public class DBPopulator {
         cat = new Category("Cats", " Small carnivorous mammal domesticated since early times as a catcher of rats and mice and as a pet and existing in several distinctive breeds and varieties");
         bird = new Category("Birds", "Any of the class Aves of warm-blooded, egg-laying, feathered vertebrates with forelimbs modified to form wings");
 
+        //add categories to a list
+        ArrayList<Category> categories = new ArrayList<Category>();
+        categories.add(fish);categories.add(dog);categories.add(reptile);categories.add(cat);categories.add(bird);
+        
         // Products
         Product angelfish = new Product("Angelfish", "Saltwater fish from Australia", fish);
         Product tigerShark = new Product("Tiger Shark", "Saltwater fish from Australia", fish);
@@ -194,6 +200,15 @@ public class DBPopulator {
         Item femaleFinch = new Item("Female Adult", 80.00f, "bird1.jpg", finch, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus dignissim vehicula tellus. Vestibulum id diam eros. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nam sit amet sem at ligula pretium fermentum. Suspendisse potenti. Phasellus rhoncus consequat augue, ac feugiat felis gravida nec. Aliquam at.");
         finch.addItem(maleFinch);
         finch.addItem(femaleFinch);
+        
+        //Add stock items
+        for(Category c:categories){
+        	for(Product p: c.getProducts()){
+        		for(Item i: p.getItems()){
+        			Stock newStock=new Stock(i, 3,4);
+        		}
+        	}
+        }
 
         catalogService.createCategory(fish);
         catalogService.createCategory(dog);
