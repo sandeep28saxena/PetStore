@@ -98,50 +98,7 @@ public class AccountController extends Controller implements Serializable {
     public String doCreateCustomer() {
     	Date dateString = loggedinCustomer.getDateOfBirth();
   		Date today = new Date();
-  		String customerFirstName = loggedinCustomer.getFirstname();
-  		String customerLastName = loggedinCustomer.getLastname();
-        if (dateString == null)
-        {
-        	addWarningMessage ("empty_date");
-        	//breaks the update action
-        	return null;
-        }
-		//Checks if DOB is set to the future date
-		if (dateString.after(today))
-		{
-			addWarningMessage ("future_date");
-        	return null;
-		}
-		if(isNumeric(customerFirstName)){
- 			addWarningMessage ("invalidFirstName");
- 			return null;
- 		}
-		if(isNumeric(customerLastName)){
- 			
- 			addWarningMessage ("invalidLastName");
- 			return null;
- 		}
-		//updates age
-		loggedinCustomer.calculateAge();
-		//If everything is ok, updates the account information
-        loggedinCustomer = customerService.createCustomer(loggedinCustomer);
-        return "main.faces";
-    }
-
-
-    public String doLogout() {
-        loggedinCustomer = null;
-        // Stop conversation
-        if (!conversation.isTransient()) {
-            conversation.end();
-        }
-        addInformationMessage("been_loggedout");
-        return "main.faces";
-    }
-
-    public String doUpdateAccount() {
-    	Date dateString = loggedinCustomer.getDateOfBirth();
-  		Date today = new Date();
+  		
   		String customerFirstName = loggedinCustomer.getFirstname();
   		String customerLastName = loggedinCustomer.getLastname();
     	if (dateString == null)
@@ -165,6 +122,143 @@ public class AccountController extends Controller implements Serializable {
 			 			addWarningMessage ("invalidLastName");
 			 			return null;
 			 		}
+		
+		String customerCountry = loggedinCustomer.getHomeAddress().getCountry();
+		
+		if(isNumeric(customerCountry)){
+			
+			addWarningMessage ("invalidCountry");
+			return null;
+		}
+		
+		String customerZipCode = loggedinCustomer.getHomeAddress().getZipcode();
+		
+		if(isNumeric(customerZipCode)){
+			
+			addWarningMessage ("invalidZipCode");
+			return null;
+		}
+		else
+		{
+			int zipLength = customerZipCode.length();
+			
+			if(zipLength <6 || zipLength >8){
+				
+				addWarningMessage ("invalidPostCodeLength");
+				return null;
+			}
+		}
+		
+		String customerCity = loggedinCustomer.getHomeAddress().getCity();
+		
+		if(isNumeric(customerCity)){
+			
+			addWarningMessage ("invalidCity");
+			return null;
+		}
+		else
+		{
+			int cityChar = customerCity.length();
+			if(cityChar <4 || cityChar > 25){
+				addWarningMessage("invalidCityLength");
+				return null;
+			}
+			
+		}
+		
+		//updates age
+        loggedinCustomer.calculateAge();
+        //If everything is ok, updates the account information
+        loggedinCustomer = customerService.updateCustomer(loggedinCustomer);
+        addInformationMessage("account_updated");
+        return "showaccount.faces";
+    }
+//    End of doCreateCustomer.
+ 
+
+
+    public String doLogout() {
+        loggedinCustomer = null;
+        // Stop conversation
+        if (!conversation.isTransient()) {
+            conversation.end();
+        }
+        addInformationMessage("been_loggedout");
+        return "main.faces";
+    }
+
+    public String doUpdateAccount() {
+    	
+    	Date dateString = loggedinCustomer.getDateOfBirth();
+  		Date today = new Date();
+  		
+  		String customerFirstName = loggedinCustomer.getFirstname();
+  		String customerLastName = loggedinCustomer.getLastname();
+    	if (dateString == null)
+        {
+        	addWarningMessage ("empty_date");
+        	//breaks the update action
+        	return null;
+        }
+    	//Checks if DOB is set to the future date
+		if (dateString.after(today))
+		{
+			addWarningMessage ("future_date");
+       	return null;
+		}
+		if(isNumeric(customerFirstName)){
+			 			addWarningMessage ("invalidFirstName");
+			 			return null;
+			 		}
+		if(isNumeric(customerLastName)){
+			 			
+			 			addWarningMessage ("invalidLastName");
+			 			return null;
+			 		}
+		
+		String customerCountry = loggedinCustomer.getHomeAddress().getCountry();
+		
+		if(isNumeric(customerCountry)){
+			
+			addWarningMessage ("invalidCountry");
+			return null;
+		}
+		
+		String customerZipCode = loggedinCustomer.getHomeAddress().getZipcode();
+		
+		if(isNumeric(customerZipCode)){
+			
+			addWarningMessage ("invalidZipCode");
+			return null;
+		}
+		else
+		{
+			int zipLength = customerZipCode.length();
+			
+			if(zipLength <6 || zipLength >8){
+				
+				addWarningMessage ("invalidPostCodeLength");
+				return null;
+			}
+		}
+		
+		String customerCity = loggedinCustomer.getHomeAddress().getCity();
+		
+		if(isNumeric(customerCity)){
+			
+			addWarningMessage ("invalidCity");
+			return null;
+		}
+		else
+		{
+			int cityChar = customerCity.length();
+			if(cityChar <4 || cityChar > 25){
+				addWarningMessage("invalidCityLength");
+				return null;
+			}
+			
+		}
+		
 		//updates age
         loggedinCustomer.calculateAge();
         //If everything is ok, updates the account information
