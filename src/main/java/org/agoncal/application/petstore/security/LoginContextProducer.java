@@ -37,6 +37,7 @@ public class LoginContextProducer {
             return new LoginContext(loginModuleName, callbackHandler);
         } catch (Exception e) {
             System.out.println("ouch!!!");
+            e.printStackTrace(); 
             return null;
         }
     }
