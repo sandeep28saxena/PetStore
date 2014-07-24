@@ -36,7 +36,8 @@ public class DBPopulator {
 	private Customer steve;
 	private Customer user;
 	private Customer admin;
-
+	private TextReadIn readIn; 
+	
 	@Inject
 	private CatalogService catalogService;
 
@@ -54,6 +55,7 @@ public class DBPopulator {
 		addNewProducts("Bull Mastif",
 				"A Big cuddley dog that is great with kids", dog, 30.99f,
 				"/petstoreee6/src/main/webapp/resources/images/bullmastiff504.jpg", "Male Massive BullMastiff");
+		readIn = new TextReadIn();
 	}
 
 	@PreDestroy
@@ -79,7 +81,7 @@ public class DBPopulator {
 		// Categories
 		fish = new Category(
 				"Fish",
-				"Any of numerous cold-blooded aquatic vertebrates characteristically having fins, gills, and a streamlined body");
+				readIn.getContents("Fish"));
 		dog = new Category(
 				"Dogs",
 				"A domesticated carnivorous mammal related to the foxes and wolves and raised in a wide variety of breeds");
