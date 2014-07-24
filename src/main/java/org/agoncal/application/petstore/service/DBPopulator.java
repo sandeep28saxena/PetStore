@@ -37,7 +37,7 @@ public class DBPopulator {
 
    
 
-<<<<<<< HEAD 
+ 
 	private Category fish;
 	private Category dog;
 	private Category reptile;
@@ -453,6 +453,4 @@ public class DBPopulator {
 	}
 
 	
-=======
->>>>>>> adb33e7ccbe84a5ef65ffed157556b27f2bfbeb8
 }
