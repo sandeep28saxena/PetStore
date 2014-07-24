@@ -66,7 +66,7 @@ public class DBPopulator {
 		initCustomers();
 		addNewProducts("Bull Mastif",
 				"A Big cuddley dog that is great with kids", dog, 30.99f,
-				"/petstoreee6/src/main/webapp/resources/images/bullmastiff504.jpg", "Male Massive BullMastiff");
+				"dog7.jpg", "Male Massive BullMastiff");
 	}
 
 	@PreDestroy
