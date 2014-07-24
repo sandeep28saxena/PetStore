@@ -1,0 +1,9 @@
+Hi, I think the best place for adding admin panel (where admin can add new product, edit or delete them)
+
+	this is how I am thinking about doing it. Output is not showing clearly 
+<li>
+                                	<h:link outcome="addproduct" value="#{i18n.productadmin} #{accountController.loggedinCustomer.firstname}"
+                                	rendered="#{accountController.loggedIn}">
+                                	<f:param name="cid" value="#{javax.enterprise.context.conversation.id}"/>
+                                	</h:link>
+                                </li>
