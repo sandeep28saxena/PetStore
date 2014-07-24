@@ -13,6 +13,7 @@ import javax.security.auth.login.LoginContext;
 import javax.security.auth.login.LoginException;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -96,83 +97,116 @@ public class AccountController extends Controller implements Serializable {
         loggedinCustomer.setPassword(credentials.getPassword());
         return "createaccount.faces";
     }
-
+    
+    /**
+     * This function will create customer account
+     * @return string.
+     */
     public String doCreateCustomer() {
+    	
     	Date dateString = loggedinCustomer.getDateOfBirth();
   		Date today = new Date();
   		
   		String customerFirstName = loggedinCustomer.getFirstname();
   		String customerLastName = loggedinCustomer.getLastname();
-    	if (dateString == null)
-        {
-        	addWarningMessage ("empty_date");
-        	//breaks the update action
-        	return null;
-        }
-    	//Checks if DOB is set to the future date
-		if (dateString.after(today))
+  		
+	//		Error catching ArrayList
+			ArrayList<String> errors = new ArrayList<String>();
+
+		if (dateString == null)
+	    {
+	       	errors.add("empty_date");
+	    }
+		else
 		{
-			addWarningMessage ("future_date");
-       	return null;
+			//Checks if DOB is set to the future date
+			if (dateString.after(today))
+			{
+				errors.add ("future_date");
+			}
+
 		}
+	//	When dob field is not empty.  	
+
+
 		if(isNumeric(customerFirstName)){
-			 			addWarningMessage ("invalidFirstName");
-			 			return null;
-			 		}
+
+				errors.add("invalidFirstName");
+
+			}
+
 		if(isNumeric(customerLastName)){
-			 			
-			 			addWarningMessage ("invalidLastName");
-			 			return null;
-			 		}
-		
+
+				errors.add("invalidLastName");
+
+			}
+
 		String customerCountry = loggedinCustomer.getHomeAddress().getCountry();
-		
+
 		if(isNumeric(customerCountry)){
-			
-			addWarningMessage ("invalidCountry");
-			return null;
+
+			errors.add("invalidCountry");
+
 		}
-		
+
 		String customerZipCode = loggedinCustomer.getHomeAddress().getZipcode();
-		
+
 		if(isNumeric(customerZipCode)){
-			
-			addWarningMessage ("invalidZipCode");
-			return null;
+
+			errors.add("invalidZipCode");
+
 		}
 		else
 		{
 			int zipLength = customerZipCode.length();
-			
+
 			if(zipLength <6 || zipLength >8){
-				
-				addWarningMessage ("invalidPostCodeLength");
-				return null;
+
+				errors.add("invalidPostCodeLength");
+
 			}
 		}
-		
+
 		String customerCity = loggedinCustomer.getHomeAddress().getCity();
-		
+
 		if(isNumeric(customerCity)){
-			
-			addWarningMessage ("invalidCity");
-			return null;
+
+			errors.add("invalidCity");
+
 		}
 		else
 		{
 			int cityChar = customerCity.length();
 			if(cityChar <4 || cityChar > 25){
-				addWarningMessage("invalidCityLength");
-				return null;
+				errors.add("invalidCityLength");
+
 			}
-			
+
 		}
+
+	//	Checking Errors list.
+		if(errors.isEmpty()){
+
+			//updates age
+	        loggedinCustomer.calculateAge();
+	        //If everything is ok, updates the account information
+	        loggedinCustomer = customerService.updateCustomer(loggedinCustomer);			
+		}
+		else
+		{
+	//		Now printing errors.
+			for(int i =0; i < errors.size();){
+
+				addWarningMessage(errors.get(i));
+				i++;
+			}
+			return null;
+
+		}
+	//	When we do have errors.
 		
-		//updates age
-        loggedinCustomer.calculateAge();
-        //If everything is ok, updates the account information
-        loggedinCustomer = customerService.updateCustomer(loggedinCustomer);
-        return "main.faces";
+		return "main.faces";
+		
     }
 //    End of doCreateCustomer.
  
@@ -187,7 +221,13 @@ public class AccountController extends Controller implements Serializable {
         addInformationMessage("been_loggedout");
         return "main.faces";
     }
-
+//    End of doLogout.
+    
+    
+    /**
+     * this function will update account.
+     * @return string.
+     */
     public String doUpdateAccount() {
     	
     	Date dateString = loggedinCustomer.getDateOfBirth();
@@ -195,79 +235,107 @@ public class AccountController extends Controller implements Serializable {
   		
   		String customerFirstName = loggedinCustomer.getFirstname();
   		String customerLastName = loggedinCustomer.getLastname();
-    	if (dateString == null)
-        {
-        	addWarningMessage ("empty_date");
-        	//breaks the update action
-        	return null;
-        }
-    	//Checks if DOB is set to the future date
-		if (dateString.after(today))
+  		
+	//		Error catching ArrayList
+			ArrayList<String> errors = new ArrayList<String>();
+
+		if (dateString == null)
+	    {
+	       	errors.add("empty_date");
+	    }
+		else
 		{
-			addWarningMessage ("future_date");
-       	return null;
+			//Checks if DOB is set to the future date
+			if (dateString.after(today))
+			{
+				errors.add ("future_date");
+			}
+
 		}
+	//	When dob field is not empty.  	
+
+
 		if(isNumeric(customerFirstName)){
-			 			addWarningMessage ("invalidFirstName");
-			 			return null;
-			 		}
+
+				errors.add("invalidFirstName");
+
+			}
+
 		if(isNumeric(customerLastName)){
-			 			
-			 			addWarningMessage ("invalidLastName");
-			 			return null;
-			 		}
-		
+
+				errors.add("invalidLastName");
+
+			}
+
 		String customerCountry = loggedinCustomer.getHomeAddress().getCountry();
-		
+
 		if(isNumeric(customerCountry)){
-			
-			addWarningMessage ("invalidCountry");
-			return null;
+
+			errors.add("invalidCountry");
+
 		}
-		
+
 		String customerZipCode = loggedinCustomer.getHomeAddress().getZipcode();
-		
+
 		if(isNumeric(customerZipCode)){
-			
-			addWarningMessage ("invalidZipCode");
-			return null;
+
+			errors.add("invalidZipCode");
+
 		}
 		else
 		{
 			int zipLength = customerZipCode.length();
-			
+
 			if(zipLength <6 || zipLength >8){
-				
-				addWarningMessage ("invalidPostCodeLength");
-				return null;
+
+				errors.add("invalidPostCodeLength");
+
 			}
 		}
-		
+
 		String customerCity = loggedinCustomer.getHomeAddress().getCity();
-		
+
 		if(isNumeric(customerCity)){
-			
-			addWarningMessage ("invalidCity");
-			return null;
+
+			errors.add("invalidCity");
+
 		}
 		else
 		{
 			int cityChar = customerCity.length();
 			if(cityChar <4 || cityChar > 25){
-				addWarningMessage("invalidCityLength");
-				return null;
+				errors.add("invalidCityLength");
+
 			}
-			
+
 		}
-		
-		//updates age
-        loggedinCustomer.calculateAge();
-        //If everything is ok, updates the account information
-        loggedinCustomer = customerService.updateCustomer(loggedinCustomer);
-        addInformationMessage("account_updated");
-        return "showaccount.faces";
-    }
-//    End of doUpdateAccount method.
+
+	//	Checking Errors list.
+		if(errors.isEmpty()){
+
+			//updates age
+	        loggedinCustomer.calculateAge();
+	        //If everything is ok, updates the account information
+	        loggedinCustomer = customerService.updateCustomer(loggedinCustomer);			
+		}
+		else
+		{
+	//		Now printing errors.
+			for(int i =0; i < errors.size();){
+
+				addWarningMessage(errors.get(i));
+				i++;
+			}
+			return null;
+
+		}
+	//	When we do have errors.
+
+
+    return "main.faces";
+    
+}
+//    End of doUpdateAccount.
     
     /**
      * This function will reset customer when customer enter invalid data.
