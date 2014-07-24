@@ -26,7 +26,7 @@ import java.util.GregorianCalendar;
         @NamedQuery(name = Customer.FIND_BY_LOGIN_PASSWORD, query = "SELECT c FROM Customer c WHERE c.login = :login AND c.password = :password"),
         @NamedQuery(name = Customer.FIND_ALL, query = "SELECT c FROM Customer c"),
       //Customer java file
-        @NamedQuery(name= Customer.FIND_BY_ID, query = "Select c from Customer where c.id =:login")
+        @NamedQuery(name= Customer.FIND_BY_ID, query = "SELECT c FROM Customer c WHERE c.id =:login")
 })
 @XmlRootElement
 public class Customer implements Serializable {

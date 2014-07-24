@@ -93,7 +93,7 @@ public class DBPopulator {
 		// Categories
 		fish = new Category(
 				"Fish",
-				readIn.getContents("Fish"));
+				readIn.getContents("descriptions", "Fish"));
 		dog = new Category(
 				"Dogs",
 				"A domesticated carnivorous mammal related to the foxes and wolves and raised in a wide variety of breeds");
