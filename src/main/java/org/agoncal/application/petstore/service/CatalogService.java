@@ -210,10 +210,13 @@ public class CatalogService implements Serializable {
         return results;
     }
     
-    public List<Stock> findStock(Item item){
-    	TypedQuery<Stock> typedQuery = em.createNamedQuery(Stock.SEARCH, Stock.class); //a stock with this items id
-        typedQuery.setParameter("keyword", "%" + item.getId() + "%");
-    	return typedQuery.getResultList();
+    public List<Stock> findStock(Item itemId) {
+        if (itemId == null)
+            throw new ValidationException("Invalid item id");
+
+        TypedQuery<Stock> typedQuery = em.createNamedQuery(Stock.SEARCH, Stock.class);
+        typedQuery.setParameter("itemId", itemId.getId());
+        return typedQuery.getResultList();
     }
 
     public List<Item> findAllItems() {
