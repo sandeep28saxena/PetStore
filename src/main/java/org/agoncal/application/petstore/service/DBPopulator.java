@@ -13,19 +13,31 @@ import javax.ejb.Startup;
 import javax.inject.Inject;
 
 /**
- * @author Antonio Goncalves http://www.antoniogoncalves.org --
+ * @author Antonio Goncalves
+ *         http://www.antoniogoncalves.org
+ *         --
  */
 
 @Singleton
 @Startup
 @Loggable
-@DataSourceDefinition(className = "org.apache.derby.jdbc.EmbeddedDataSource", name = "java:global/jdbc/applicationPetstoreDS", user = "app", password = "app", databaseName = "applicationPetstoreDB", properties = { "connectionAttributes=;create=true" })
+@DataSourceDefinition(
+        className = "org.apache.derby.jdbc.EmbeddedDataSource",
+        name = "java:global/jdbc/applicationPetstoreDS",
+        user = "app",
+        password = "app",
+        databaseName = "applicationPetstoreDB",
+        properties = {"connectionAttributes=;create=true"}
+)
 public class DBPopulator {
 
-	// ======================================
-	// = Attributes =
-	// ======================================
+    // ======================================
+    // =             Attributes             =
+    // ======================================
 
+   
+
+<<<<<<< HEAD 
 	private Category fish;
 	private Category dog;
 	private Category reptile;
@@ -36,7 +48,7 @@ public class DBPopulator {
 	private Customer steve;
 	private Customer user;
 	private Customer admin;
-	private TextReadIn readIn; 
+	private TextReadIn readIn;
 	
 	@Inject
 	private CatalogService catalogService;
@@ -55,7 +67,7 @@ public class DBPopulator {
 		addNewProducts("Bull Mastif",
 				"A Big cuddley dog that is great with kids", dog, 30.99f,
 				"/petstoreee6/src/main/webapp/resources/images/bullmastiff504.jpg", "Male Massive BullMastiff");
-		readIn = new TextReadIn();
+		
 	}
 
 	@PreDestroy
@@ -441,4 +453,6 @@ public class DBPopulator {
 	}
 
 	
+=======
+>>>>>>> adb33e7ccbe84a5ef65ffed157556b27f2bfbeb8
 }

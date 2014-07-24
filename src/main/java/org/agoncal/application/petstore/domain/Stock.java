@@ -14,7 +14,7 @@ Also will help the website actually become functional as a shop
 */
 @Entity
 @NamedQueries({
-    @NamedQuery(name = Stock.SEARCH, query = "SELECT i FROM Stock i WHERE i.item.id LIKE :keyword ORDER BY i.item.id")
+    @NamedQuery(name = Stock.SEARCH, query = "SELECT i FROM Stock i WHERE i.item.id = :itemId ORDER BY i.item.id")
 
 })
 @XmlRootElement
@@ -89,6 +89,20 @@ public String toString() {
     sb.append(", stockSold=").append(stockSold).append('\'');
     sb.append('}');
     return sb.toString();
+}
+
+public boolean checkStockPlusOne() {
+	//check we have enough stock to be able to sell an item
+	if(((stockLevel +1)-stockSold)>=0){
+		return true;
+	}
+	return false;
+}
+
+public void changeStock(int i) {
+	stockLevel--;
+	stockSold++;
+	
 }
 
 }
