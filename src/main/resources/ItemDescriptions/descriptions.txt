@@ -13,3 +13,52 @@ Small carnivorous mammal domesticated since early times as a catcher of rats and
 Birds
 Any of the class Aves of warm-blooded, egg-laying, feathered vertebrates with forelimbs modified to form wings
 ---
+Angelfish
+Saltwater fish from Australia
+---
+Tiger Shark
+Saltwater fish from Australia
+---
+Koi
+Freshwater fish from Japan
+---
+Goldfish
+Freshwater fish from China
+---
+Bulldog
+Friendly dog from England
+---
+Poodle
+Cute dog from France
+---
+Dalmation
+Great dog for a fire station
+---
+Golden Retriever
+Great family dog
+---
+Labrador Retriever
+Great hunting dog
+---
+Chihuahua
+Great companion dog
+---
+Rattlesnake
+Doubles as a watch dog
+---
+Iguana
+Friendly Green Friend
+---
+Manx
+Great for reducing mouse populations
+---
+Persian
+Friendly house, doubles as a princess
+---
+Amazon Parrot
+Great companion for up to 75 years
+---
+Finch
+Great stress reliever
+---
+
