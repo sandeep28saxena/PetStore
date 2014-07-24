@@ -60,6 +60,7 @@ public class DBPopulator {
     private void populateDB() {
         initCatalog();
         initCustomers();
+        addNewProducts("Bull Mastif", "A Big cuddley dog that is great with kids", dog);
     }
 
     @PreDestroy
@@ -229,6 +230,20 @@ public class DBPopulator {
         customerService.createCustomer(steve);
         customerService.createCustomer(user);
         customerService.createCustomer(admin);
+    }
+    
+    /**
+     * @param name
+     * @param description
+     * @param newCatagory
+     */
+    private void addNewProducts(String name, String description, Category newCatagory){
+    	
+    	Product title  = new Product (name , description, newCatagory);
+    	newCatagory.addProduct(title);
+    	
+    	
+    	
     }
 
 }

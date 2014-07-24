@@ -68,6 +68,8 @@ public class AccountController extends Controller implements Serializable {
 
         loginContext.login();
         loggedinCustomer = customerService.findCustomer(credentials.getLogin());
+
+        
         return "main.faces";
     }
 
