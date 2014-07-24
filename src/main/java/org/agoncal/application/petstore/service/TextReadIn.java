@@ -5,8 +5,10 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.File;
+import java.io.InputStreamReader;
+import java.io.Serializable;
 
-public class TextReadIn {
+public class TextReadIn implements Serializable{
 
 	public TextReadIn(){
 
@@ -14,12 +16,12 @@ public class TextReadIn {
 	
 	private String getFilePath(String filename){
 		//String fileSeparator = File.separator;
-		return "src" + File.separator + "main" + File.separator + "resources" + File.separator + "ItemDescriptions" + File.separator + filename + ".txt";
+		return /* "applications" + File.separator + "applicationPetstore" + */File.separator + "resources" + File.separator + "files" + File.separator + filename + ".txt";
 	}
 	
 	public String getContents(String filename){
 		try{
-			BufferedReader br = new BufferedReader(new FileReader(getFilePath(filename)));
+			BufferedReader br = new BufferedReader(new InputStreamReader(Thread.currentThread().getContextClassLoader().getResourceAsStream(filename+".txt")));
 			String result = "";
 			String line = br.readLine();
 
@@ -45,7 +47,7 @@ public class TextReadIn {
 		boolean found = false;
 		System.out.println("Inside TextReadIn.getContents("+filename+", "+category+")");
 		try{
-			BufferedReader br = new BufferedReader(new FileReader(getFilePath(filename)));
+			BufferedReader br = new BufferedReader(new InputStreamReader(Thread.currentThread().getContextClassLoader().getResourceAsStream(filename+".txt")));
 			StringBuilder sb = new StringBuilder();
 			String line = br.readLine();
 
@@ -78,10 +80,13 @@ public class TextReadIn {
 			return sb.toString();
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
-			return "";
+			return " ";
 		} catch (IOException e) {
 			e.printStackTrace();
-			return "";
+			return " ";
+		} catch (NullPointerException e){
+			e.printStackTrace();
+			return " ";
 		}
 	}
 }

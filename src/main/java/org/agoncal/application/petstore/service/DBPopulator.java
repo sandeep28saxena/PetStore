@@ -121,7 +121,7 @@ public class DBPopulator {
 		Product tigerShark = new Product("Tiger Shark",
 				"Saltwater fish from Australia", fish);
 		Product koi = new Product("Koi", "Freshwater fish from Japan", fish);
-		Product goldfish = new Product("Goldfish", readIn.getContents("descriptions", "Goldfish"), fish);
+		Product goldfish = new Product("Goldfish", "goldfish.txt", fish);
 		fish.addProduct(angelfish);
 		fish.addProduct(tigerShark);
 		fish.addProduct(koi);
@@ -211,7 +211,7 @@ public class DBPopulator {
 				12.00f,
 				"fish2.jpg",
 				goldfish,
-				"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ac nunc mauris. Proin augue sem, imperdiet quis imperdiet vitae, egestas vitae quam. Nam id lectus nisi. In hac habitasse platea dictumst. Proin ullamcorper eros non diam accumsan ornare. Fusce posuere, nulla vel tempor molestie, lectus dui aliquet orci, in volutpat.");
+				"goldfish.txt");
 		Item femaleGoldfish = new Item(
 				"Female Puppy",
 				12.00f,
