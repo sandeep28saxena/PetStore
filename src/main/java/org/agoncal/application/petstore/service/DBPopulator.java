@@ -67,7 +67,6 @@ public class DBPopulator {
 		addNewProducts("Bull Mastif",
 				"A Big cuddley dog that is great with kids", dog, 30.99f,
 				"/petstoreee6/src/main/webapp/resources/images/bullmastiff504.jpg", "Male Massive BullMastiff");
-		readIn= new TextReadIn();
 	}
 
 	@PreDestroy
@@ -89,11 +88,12 @@ public class DBPopulator {
 	// ======================================
 
 	private void initCatalog() {
-
+		readIn = new TextReadIn();
+		
 		// Categories
 		fish = new Category(
 				"Fish",
-				readIn.getContents("descriptions", "Fish"));
+				"Any of numerous cold-blooded aquatic vertebrates characteristically having fins, gills, and a streamlined body.");
 		dog = new Category(
 				"Dogs",
 				"A domesticated carnivorous mammal related to the foxes and wolves and raised in a wide variety of breeds");
@@ -121,8 +121,7 @@ public class DBPopulator {
 		Product tigerShark = new Product("Tiger Shark",
 				"Saltwater fish from Australia", fish);
 		Product koi = new Product("Koi", "Freshwater fish from Japan", fish);
-		Product goldfish = new Product("Goldfish",
-				"Freshwater fish from China", fish);
+		Product goldfish = new Product("Goldfish", readIn.getContents("descriptions", "Goldfish"), fish);
 		fish.addProduct(angelfish);
 		fish.addProduct(tigerShark);
 		fish.addProduct(koi);

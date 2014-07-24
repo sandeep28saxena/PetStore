@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.File;
 
 public class TextReadIn {
 
@@ -11,16 +12,14 @@ public class TextReadIn {
 
 	}
 	
-	private String getFilePath(String fileName){
-		String fileSeparator= java.io.File.separator;
-		return "src" + fileSeparator + "main" + fileSeparator + 
-				"resources" + fileSeparator + "ItemDescriptions" + 
-				fileSeparator + fileName + ".txt";
+	private String getFilePath(String filename){
+		//String fileSeparator = File.separator;
+		return "src" + File.separator + "main" + File.separator + "resources" + File.separator + "ItemDescriptions" + File.separator + filename + ".txt";
 	}
 	
-	public String getContents(String fileName){
+	public String getContents(String filename){
 		try{
-			BufferedReader br = new BufferedReader(new FileReader(getFilePath(fileName)));
+			BufferedReader br = new BufferedReader(new FileReader(getFilePath(filename)));
 			String result = "";
 			String line = br.readLine();
 
@@ -41,16 +40,19 @@ public class TextReadIn {
 		}
 	}
 
-	public String getContents(String fileName, String category){
+	public String getContents(String filename, String category){
 		boolean done = false;
 		boolean found = false;
+		System.out.println("Inside TextReadIn.getContents("+filename+", "+category+")");
 		try{
-			BufferedReader br = new BufferedReader(new FileReader(getFilePath(fileName)));
+			BufferedReader br = new BufferedReader(new FileReader(getFilePath(filename)));
 			StringBuilder sb = new StringBuilder();
 			String line = br.readLine();
 
 			while(line != null && !found){
+				System.out.println("line = " + line);
 				if(line.equals(category)){
+					System.out.println("Found "+category);
 					found = true;
 					line = br.readLine();
 				}
@@ -59,17 +61,20 @@ public class TextReadIn {
 				}
 			}
 			while(line != null && !done){
+				System.out.println("line = " + line);
 				if(!line.equals("---")){
 					sb.append(line);
 					sb.append("\n");
 					line = br.readLine();
 				}
 				else{
+					System.out.println("Done");
 					done = true;
 				}
 			}
 
 			br.close();
+			System.out.println("sb.toString() = " + sb.toString());
 			return sb.toString();
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
