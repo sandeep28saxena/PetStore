@@ -111,4 +111,21 @@ public class CustomerService implements Serializable {
 
         em.remove(em.merge(customer));
     }
+    
+    /**
+     * This function will find customer by their Id
+     * @param id
+     * @return customer info.
+     */
+    public Customer findCustomerByID(final Long id) {
+
+        TypedQuery<Customer> typedQuery = em.createNamedQuery(Customer.FIND_BY_ID, Customer.class);
+        typedQuery.setParameter("id", id);
+        
+        return typedQuery.getSingleResult();
+    }
+//    findCustomerByID ends.
+    
+    
 }
+//End of class.

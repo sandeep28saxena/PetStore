@@ -24,7 +24,9 @@ import java.util.GregorianCalendar;
 @NamedQueries({
         @NamedQuery(name = Customer.FIND_BY_LOGIN, query = "SELECT c FROM Customer c WHERE c.login = :login"),
         @NamedQuery(name = Customer.FIND_BY_LOGIN_PASSWORD, query = "SELECT c FROM Customer c WHERE c.login = :login AND c.password = :password"),
-        @NamedQuery(name = Customer.FIND_ALL, query = "SELECT c FROM Customer c")
+        @NamedQuery(name = Customer.FIND_ALL, query = "SELECT c FROM Customer c"),
+      //Customer java file
+        @NamedQuery(name= Customer.FIND_BY_ID, query = "Select c from Customer where c.id =:login")
 })
 @XmlRootElement
 public class Customer implements Serializable {
@@ -70,6 +72,7 @@ public class Customer implements Serializable {
     public static final String FIND_BY_LOGIN = "Customer.findByLogin";
     public static final String FIND_BY_LOGIN_PASSWORD = "Customer.findByLoginAndPassword";
     public static final String FIND_ALL = "Customer.findAll";
+    public static final String FIND_BY_ID ="Customer.FIND_BY_ID";
 
     // ======================================
     // =            Constructors            =

@@ -267,6 +267,17 @@ public class AccountController extends Controller implements Serializable {
         addInformationMessage("account_updated");
         return "showaccount.faces";
     }
+//    End of doUpdateAccount method.
+    
+    /**
+     * This function will reset customer when customer enter invalid data.
+     */
+    public void resetCustomer(){
+        	
+    	Customer customer = customerService.findCustomerByID(loggedinCustomer.getId());
+    	loggedinCustomer.setFirstname(customer.getFirstname());
+    }
+//        End of resetCustomer.
 
     public boolean isLoggedIn() {
         return loggedinCustomer != null;
