@@ -1,0 +1,249 @@
+The following code seems a better way for catching and displaying errors.
+You can use it for doCreateCustomer method on accountController and updateAccount as well. Please check.
+
+/***************update account function************************************************/
+public String doUpdateAccount() {
+    	
+    	Date dateString = loggedinCustomer.getDateOfBirth();
+  		Date today = new Date();
+  		
+  		String customerFirstName = loggedinCustomer.getFirstname();
+  		String customerLastName = loggedinCustomer.getLastname();
+    	if (dateString == null)
+        {
+        	addWarningMessage ("empty_date");
+        	//breaks the update action
+        	return null;
+        }
+    	//Checks if DOB is set to the future date
+		if (dateString.after(today))
+		{
+			addWarningMessage ("future_date");
+       	return null;
+		}
+		if(isNumeric(customerFirstName)){
+			 			addWarningMessage ("invalidFirstName");
+			 			return null;
+			 		}
+
+		int fnameLen = customerFirstName.length();
+			
+			if( fnameLen <3 || fnameLen >15){
+				
+				addWarningMessage ("invalidFnameLen");
+				return null;
+			}
+			else
+			{
+				loggedinCustomer.setFirstname(customerFirstName);
+								
+			}
+			// When the first name length is good.
+
+		if(isNumeric(customerLastName)){
+			 			
+			 			addWarningMessage ("invalidLastName");
+			 			return null;
+			 		}
+		
+		String customerCountry = loggedinCustomer.getHomeAddress().getCountry();
+		
+		if(isNumeric(customerCountry)){
+			
+			addWarningMessage ("invalidCountry");
+			return null;
+		}
+		
+		String customerZipCode = loggedinCustomer.getHomeAddress().getZipcode();
+		
+		if(isNumeric(customerZipCode)){
+			
+			addWarningMessage ("invalidZipCode");
+			return null;
+		}
+		else
+		{
+			int zipLength = customerZipCode.length();
+			
+			if(zipLength <6 || zipLength >8){
+				
+				addWarningMessage ("invalidPostCodeLength");
+				return null;
+			}
+		}
+		
+		String customerCity = loggedinCustomer.getHomeAddress().getCity();
+		
+		if(isNumeric(customerCity)){
+			
+			addWarningMessage ("invalidCity");
+			return null;
+		}
+		else
+		{
+			int cityChar = customerCity.length();
+			if(cityChar <4 || cityChar > 25){
+				addWarningMessage("invalidCityLength");
+				return null;
+			}
+			
+		}
+		
+		//updates age
+        loggedinCustomer.calculateAge();
+        //If everything is ok, updates the account information
+        loggedinCustomer = customerService.updateCustomer(loggedinCustomer);
+        addInformationMessage("account_updated");
+        return "showaccount.faces";
+    }
+
+/**************message property*****************************************************/
+future_date=You have entered a future date. Please try again.
+empty_date=You did not enter a date. Please try again.
+invalidFirstName = Customer First name can't be numeric.
+invalidLastName = Customer Last name can't be numeric.
+invalidCountry =Customer country must not be numeric.
+invalidZipCode =Invalid customer zipcode. Must not be numeric.
+invalidCity = Invalid customer city. Must not be numeric.
+invalidCityLength = Invalid customer city name length. City name must be between 
+invalidPostCodeLength = PostCode length must be between 6 to 8 character.
+
+
+
+/*AccountController java*/
+public void resetCustomer(){
+    	
+    	Customer customer = customerService.findCustomerByID(loggedinCustomer.getId());
+    	loggedinCustomer.setFirstname(customer.getFirstname());
+    }
+//    End of resetCustomer.
+
+
+public Customer findCustomerByID(final Long id) {
+
+        TypedQuery<Customer> typedQuery = em.createNamedQuery(Customer.FIND_BY_ID, Customer.class);
+        typedQuery.setParameter("id", id);
+        
+        return typedQuery.getSingleResult();
+    }
+//    findCustomerByID ends.
+
+
+//Customer java file
+@NamedQuery(name= Customer.FIND_BY_ID, query = "Select c from Customer where c.id =:login")
+
+
+
+
+
+
+
+public String doUpdateAccount() {
+    	
+    	Date dateString = loggedinCustomer.getDateOfBirth();
+  		Date today = new Date();
+  		
+  		String customerFirstName = loggedinCustomer.getFirstname();
+  		String customerLastName = loggedinCustomer.getLastname();
+  		
+	//		Error catching ArrayList
+			ArrayList<String> errors = new ArrayList<String>();
+			
+		if (dateString == null)
+	    {
+	       	errors.add("empty_date");
+	    }
+		else
+		{
+			//Checks if DOB is set to the future date
+			if (dateString.after(today))
+			{
+				errors.add ("future_date");
+			}
+			
+		}
+	//	When dob field is not empty.  	
+		
+		
+		if(isNumeric(customerFirstName)){
+			
+				errors.add("invalidFirstName");
+				
+			}
+		
+		if(isNumeric(customerLastName)){
+			 			
+				errors.add("invalidLastName");
+				
+			}
+		
+		String customerCountry = loggedinCustomer.getHomeAddress().getCountry();
+		
+		if(isNumeric(customerCountry)){
+			
+			errors.add("invalidCountry");
+			
+		}
+	
+		String customerZipCode = loggedinCustomer.getHomeAddress().getZipcode();
+		
+		if(isNumeric(customerZipCode)){
+			
+			errors.add("invalidZipCode");
+			
+		}
+		else
+		{
+			int zipLength = customerZipCode.length();
+			
+			if(zipLength <6 || zipLength >8){
+				
+				errors.add("invalidPostCodeLength");
+				
+			}
+		}
+		
+		String customerCity = loggedinCustomer.getHomeAddress().getCity();
+		
+		if(isNumeric(customerCity)){
+			
+			errors.add("invalidCity");
+			
+		}
+		else
+		{
+			int cityChar = customerCity.length();
+			if(cityChar <4 || cityChar > 25){
+				errors.add("invalidCityLength");
+				
+			}
+			
+		}
+	
+	//	Checking Errors list.
+		if(errors.isEmpty()){
+			
+			//updates age
+	        loggedinCustomer.calculateAge();
+	        //If everything is ok, updates the account information
+	        loggedinCustomer = customerService.updateCustomer(loggedinCustomer);			
+		}
+		else
+		{
+	//		Now printing errors.
+			for(int i =0; i < errors.size();){
+				
+				addWarningMessage(errors.get(i));
+				i++;
+			}
+			return null;
+			
+		}
+	//	When we do have errors.
+	
+	
+    return "main.faces";
+    
+}
+//    End of doUpdateAccount.
+

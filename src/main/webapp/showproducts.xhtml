@@ -15,6 +15,9 @@
     <ui:define name="title">#{i18n.showProducts_productForCategory} : #{catalogController.categoryName}</ui:define>
 
     <ui:define name="body">
+    
+   
+    <h:commandButton action="#{DBPopulator.addNewProducts()}" value="Click here to add more Products" />
 
         <h2>#{i18n.showProducts_productForCategory} : #{catalogController.categoryName}</h2>
 

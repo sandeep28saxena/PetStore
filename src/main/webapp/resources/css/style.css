@@ -12,7 +12,7 @@ body {
 }
 
 .menu-en {
-    background: transparent url("#{resource['icons/us.gif']}") no-repeat center left;
+    background: transparent url("#{resource['icons/uk.gif']}") no-repeat center left;
     padding: 5px 5px 5px 20px;
 }
 
