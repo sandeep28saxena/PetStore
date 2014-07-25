@@ -6,47 +6,38 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	template="WEB-INF/layouts/template.xhtml">
-
 	<ui:define name="title">Add New Product</ui:define>
-
 	<ui:define name="body">
-
-
 		<h:form>
 			<center>
-
+				<h2>Add a new product:</h2>
 				<h:panelGrid columns="1">
 					<h:outputText value="*#{i18n.name} :" />
-					<h:inputText id="name" value="#{DBPopulator.name}" />
+					<h:inputText id="name" value="#{DBPopulator.name}" style="border: 1px solid black" />
 					<h:message for="name" style="color: black;" />
 
 					<h:outputText value="*#{i18n.description} :" />
-					<h:inputText id="description" value="#{DBPopulator.description}" />
+					<h:inputText id="description" value="#{DBPopulator.description}" style="border: 1px solid black" />
 					<h:message for="description" style="color: black;" />
 
-
 					<h:outputText value="*#{i18n.newCatagory} :" />
-					<h:inputText id="newCatagory" value="#{DBPopulator.newCatagory}" />
+					<h:inputText id="newCatagory" value="#{DBPopulator.newCatagory}" style="border: 1px solid black" />
 					<h:message for="newCatagory" style="color: black;" />
 
-					<h:outputText value="*#{i18n.newCatagory} :" />
-					<h:inputText id="Catagory"
-						value="#{DBPopulator.newProductCatagoryInstance}" />
-					<h:message for="Catagory" style="color: black;" />
-
-
 					<h:outputText value="*#{i18n.itemCost} :" />
-					<h:inputText id="itemCost" value="#{DBPopulator.itemCost}" />
+					<h:inputText id="itemCost" value="#{DBPopulator.itemCost}" style="border: 1px solid black" />
 					<h:message for="itemCost" style="color: black;" />
 
-
+					<!-- Managed to reduce the size of the text box. Next step was to move the button next to the text box -->
 					<h:outputText value="*#{i18n.imagePath} :" />
-					<h:inputText id="imagePath" value="#{DBPopulator.imagePath}" />
+					<h:inputText id="imagePath" value="#{DBPopulator.imagePath}" style="width: 70px; padding: 2px; border: 1px solid black; float: left;" />
 					<h:message for="imagePath" style="color: black;" />
+					<!-- Make button On click method so that it opens a file dialog so the user can browse for the file path, not have to type it out. -->
+					<h:button onClick="" value="Test" style="border: 1px solid black; float: left;" />
 
 					<h:outputText value="*#{i18n.FurtherDescription} :" />
 					<h:inputText id="FurtherDescription"
-						value="#{DBPopulator.Description}" />
+						value="#{DBPopulator.Description}" style="border: 1px solid black"/>
 					<h:message for="FurtherDescription" style="color: black;" />
 
 
@@ -54,8 +45,7 @@
 				</h:panelGrid>
 
 				<h:commandButton action="#{DBPopulator.addNewProduct()}"
-					value="Add Product" />
-
+					value="Add Product" style="border: 1px solid black" />
 			</center>
 
 
