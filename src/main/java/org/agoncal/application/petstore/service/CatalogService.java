@@ -211,11 +211,14 @@ public class CatalogService implements Serializable {
     }
     
     public List<Stock> findStock(Item itemId) {
+    	System.out.println("test1");
         if (itemId == null)
             throw new ValidationException("Invalid item id");
+        System.out.println("test2");
 
         TypedQuery<Stock> typedQuery = em.createNamedQuery(Stock.SEARCH, Stock.class);
         typedQuery.setParameter("itemId", itemId.getId());
+        System.out.println("test3");
         System.out.println(typedQuery.getResultList());
         return typedQuery.getResultList();
     }
