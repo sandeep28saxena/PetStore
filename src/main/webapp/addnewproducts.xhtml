@@ -7,36 +7,57 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	template="WEB-INF/layouts/template.xhtml">
 
-	<ui:define name="title" value="New Products"></ui:define>
+	<ui:define name="title">Add New Product</ui:define>
 
 	<ui:define name="body">
 
 
 		<h:form>
-			<h:outputText value="*#{i18n.name} :" />
-			<h:inputText id="name" value="#{DBPopulator.name}" />
-			<h:message for="name" style="color: black;" />
+			<center>
 
-			<h:outputText value="*#{i18n.description} :" />
-			<h:inputText id="description" value="#{DBPopulator.description}" />
-			<h:message for="description" style="color: black;" />
+				<h:panelGrid columns="1">
+					<h:outputText value="*#{i18n.name} :" />
+					<h:inputText id="name" value="#{DBPopulator.name}" />
+					<h:message for="name" style="color: black;" />
+
+					<h:outputText value="*#{i18n.description} :" />
+					<h:inputText id="description" value="#{DBPopulator.description}" />
+					<h:message for="description" style="color: black;" />
 
 
-			<h:outputText value="*#{i18n.newCatagory} :" />
-			<h:inputText id="newCatagory" value="#{DBPopulator.newCatagory}" />
-			<h:message for="newCatagory" style="color: black;" />
+					<h:outputText value="*#{i18n.newCatagory} :" />
+					<h:inputText id="newCatagory" value="#{DBPopulator.newCatagory}" />
+					<h:message for="newCatagory" style="color: black;" />
 
-			<h:outputText value="*#{i18n.itemCost} :" />
-			<h:inputText id="itemCost" value="#{DBPopulator.itemCost}" />
-			<h:message for="itemCost" style="color: black;" />
+					<h:outputText value="*#{i18n.newCatagory} :" />
+					<h:inputText id="Catagory"
+						value="#{DBPopulator.newProductCatagoryInstance}" />
+					<h:message for="Catagory" style="color: black;" />
 
-			<h:outputText value="*#{i18n.imagePath} :" />
-			<h:inputText id="imagePath" value="#{DBPopulator.imagePath}" />
-			<h:message for="imagePath" style="color: black;" />
-			
-			<h:outputText value="*#{i18n.FurtherDescription} :" />
-			<h:inputText id="FurtherDescription" value="#{DBPopulator.Description}" />
-			<h:message for="FurtherDescription" style="color: black;" />
+
+					<h:outputText value="*#{i18n.itemCost} :" />
+					<h:inputText id="itemCost" value="#{DBPopulator.itemCost}" />
+					<h:message for="itemCost" style="color: black;" />
+
+
+					<h:outputText value="*#{i18n.imagePath} :" />
+					<h:inputText id="imagePath" value="#{DBPopulator.imagePath}" />
+					<h:message for="imagePath" style="color: black;" />
+
+					<h:outputText value="*#{i18n.FurtherDescription} :" />
+					<h:inputText id="FurtherDescription"
+						value="#{DBPopulator.Description}" />
+					<h:message for="FurtherDescription" style="color: black;" />
+
+
+
+				</h:panelGrid>
+
+				<h:commandButton action="#{DBPopulator.addNewProduct()}"
+					value="Add Product" />
+
+			</center>
+
 
 
 

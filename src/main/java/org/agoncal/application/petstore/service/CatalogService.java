@@ -216,6 +216,7 @@ public class CatalogService implements Serializable {
 
         TypedQuery<Stock> typedQuery = em.createNamedQuery(Stock.SEARCH, Stock.class);
         typedQuery.setParameter("itemId", itemId.getId());
+        System.out.println(typedQuery.getResultList());
         return typedQuery.getResultList();
     }
 
