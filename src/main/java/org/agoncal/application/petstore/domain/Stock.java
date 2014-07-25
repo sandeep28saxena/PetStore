@@ -14,7 +14,7 @@ Also will help the website actually become functional as a shop
  */
 @Entity
 @NamedQueries({
-	@NamedQuery(name = Stock.SEARCH, query = "SELECT * FROM Stock WHERE prod_fk = :itemId ORDER BY i.item.id")
+	@NamedQuery(name = Stock.SEARCH, query = "SELECT i FROM Stock i WHERE i.item.id = :itemId ORDER BY i.item.id")
 
 })
 @XmlRootElement
