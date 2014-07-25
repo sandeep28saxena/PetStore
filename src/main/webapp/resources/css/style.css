@@ -40,3 +40,9 @@ body {
     background: transparent url("#{resource['icons/arrow_refresh.png']}") no-repeat center left;
     padding: 5px 5px 5px 20px;
 }
+
+.add_button{
+	background:transparent;
+	    padding: 5px 5px 5px 20px;
+	
+}

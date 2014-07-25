@@ -50,6 +50,9 @@ public class DBPopulator {
 	private Customer admin;
 	private TextReadIn readIn;
 	
+	
+	
+	
 	@Inject
 	private CatalogService catalogService;
 
@@ -438,7 +441,7 @@ public class DBPopulator {
 	 * @param newCatagory
 	 */
 	
-	private void addNewProducts(String name, String description,
+	public void addNewProducts(String name, String description,
 			Category newCatagory,float itemCost, String imagePath
 			,String Description) {
 
