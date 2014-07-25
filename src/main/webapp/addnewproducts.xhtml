@@ -25,14 +25,21 @@
 					<h:message for="description" style="color: black;" />
 
 
+<<<<<<< HEAD
 					<h:outputText value="*#{i18n.newCatagory} :" />
 					<h:inputText id="newCatagory" value="#{DBPopulator.newCatagory}" />
 					<h:message for="newCatagory" style="color: black;" />
+=======
+			<h:outputText value="*#{i18n.newCatagory} :" />
+			<h:inputText id="Catagory" value="#{DBPopulator.newProductCatagoryInstance}" />
+			<h:message for="Catagory" style="color: black;" />
+>>>>>>> 598dca3c3804d52223fa43107519d6596c2b8932
 
 					<h:outputText value="*#{i18n.itemCost} :" />
 					<h:inputText id="itemCost" value="#{DBPopulator.itemCost}" />
 					<h:message for="itemCost" style="color: black;" />
 
+<<<<<<< HEAD
 					<h:outputText value="*#{i18n.imagePath} :" />
 					<h:inputText id="imagePath" value="#{DBPopulator.imagePath}" />
 					<h:message for="imagePath" style="color: black;" />
@@ -43,6 +50,22 @@
 					<h:message for="FurtherDescription" style="color: black;" />
 				</h:panelGrid>
 			</center>
+=======
+			<h:outputText value="*#{i18n.imagePath} :" />
+			<h:inputText id="imagePath" value="#{DBPopulator.imagePath}" />
+			<h:message for="imagePath" style="color: black;" />
+			
+			<h:outputText value="*#{i18n.FurtherDescription} :" />
+			<h:inputText id="FurtherDescription" value="#{DBPopulator.detailedDescription}" />
+			<h:message for="FurtherDescription" style="color: black;" />
+</h:panelGrid>
+
+<h:commandButton action="#{DBPopulator.addNewProduct()}" value="Add Product" />
+</center>
+
+
+
+>>>>>>> 598dca3c3804d52223fa43107519d6596c2b8932
 
 		</h:form>
 

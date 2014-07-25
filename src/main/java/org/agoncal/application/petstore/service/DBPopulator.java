@@ -50,6 +50,12 @@ public class DBPopulator {
 	private Customer admin;
 	private TextReadIn readIn;
 	
+	public String name;
+	public String description;
+	public Category newProductCatagoryInstance;
+	public float itemCost;
+	public String imagePath;
+	public String detailedDescription;
 	
 	
 	
@@ -445,6 +451,14 @@ public class DBPopulator {
 			Category newCatagory,float itemCost, String imagePath
 			,String Description) {
 
+		this.name = name;
+		this.description= description;
+		this.newProductCatagoryInstance = newCatagory;
+		this.itemCost = itemCost;
+		this.imagePath = imagePath;
+		this.detailedDescription = Description;
+		
+		
 		Product title = new Product(name, description, newCatagory);
 		newCatagory.addProduct(title);
 
