@@ -1,4 +1,4 @@
-
+<!--better form for adding new item-->
 <h:form class="form-horizontal">
 		
 			<h:div class='control-group'>
