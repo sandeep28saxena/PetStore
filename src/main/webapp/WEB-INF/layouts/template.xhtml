@@ -69,6 +69,7 @@
                                                 <f:ajax render="@form"/>
                                                 <h:outputText value="&nbsp;English"/>
                                             </h:commandLink>
+                                            <h:commandButton action="#{DBPopulator.addNewProducts()}" value="Click here to add more Products" />
                                         </li>
                                     </ul>
                                 </li>
@@ -118,6 +119,7 @@
                         </div>
                         <!--/ Buttons on the right -->
                     </h:form>
+                    <h:commandButton action="#{DBPopulator.addNewProducts()}" value="Click here to add more Products"  />
                 </div>
             </div>
         </div>
