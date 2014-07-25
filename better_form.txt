@@ -1,4 +1,4 @@
-<!--form with css class that creates better view-->
+
 <h:form class="form-horizontal">
 		
 			<h:div class='control-group'>
