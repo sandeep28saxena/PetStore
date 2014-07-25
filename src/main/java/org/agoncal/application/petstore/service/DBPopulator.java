@@ -406,7 +406,7 @@ public class DBPopulator {
 		for (Category c : categories) {
 			for (Product p : c.getProducts()) {
 				for (Item i : p.getItems()) {
-					Stock newStock = new Stock(i, 3, 4);
+					Stock newStock = new Stock(i, 5, 3);
 				}
 			}
 		}

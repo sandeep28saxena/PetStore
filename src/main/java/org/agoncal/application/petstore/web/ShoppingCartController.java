@@ -52,7 +52,7 @@ public class ShoppingCartController extends Controller implements Serializable {
 		System.out.println("fuck up here1");
 		Item item = catalogBean.findItem(getParamId("itemId"));
 		System.out.println("Item update"+item.getId());
-		System.out.println(catalogBean.findStock(item).get(0));
+		System.out.println("the size is: " + catalogBean.findStock(item).size());
 		Stock stock = catalogBean.findStock(item).get(0);
 		System.out.println(catalogBean.findStock(item).size());
 		boolean available = stock.checkStockPlusOne();
