@@ -12,7 +12,8 @@
 	<ui:define name="body">
 
 
-		<h:form>
+		<h:form><center>
+		<h:panelGrid columns="1">
 			<h:outputText value="*#{i18n.name} :" />
 			<h:inputText id="name" value="#{DBPopulator.name}" />
 			<h:message for="name" style="color: black;" />
@@ -37,8 +38,7 @@
 			<h:outputText value="*#{i18n.FurtherDescription} :" />
 			<h:inputText id="FurtherDescription" value="#{DBPopulator.Description}" />
 			<h:message for="FurtherDescription" style="color: black;" />
-
-
+</h:panelGrid></center>
 
 		</h:form>
 
