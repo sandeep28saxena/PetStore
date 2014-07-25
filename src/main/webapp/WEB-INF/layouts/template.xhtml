@@ -48,6 +48,10 @@
                         <h:link class="brand" outcome="main">NB Pets
                             <f:param name="cid" value="#{javax.enterprise.context.conversation.id}"/>
                         </h:link>
+                        
+                          <h:link class="brand" outcome="addnewproducts">Add New Products
+                            <f:param name="cid" value="#{javax.enterprise.context.conversation.id}"/>
+                        </h:link>
 
                         <!-- Buttons on the left -->
                         <div class="nav-collapse collapse nav pull-left">
@@ -69,7 +73,14 @@
                                                 <f:ajax render="@form"/>
                                                 <h:outputText value="&nbsp;English"/>
                                             </h:commandLink>
-                                            <h:commandButton action="#{DBPopulator.addNewProducts()}" value="Click here to add more Products" />
+                                            
+                                        
+                                            
+                                           <!--  <h:commandButton action="#{DBPopulator.addNewProducts()}"
+												value="Click here to add more Products"
+												styleClass="add_button" /> -->
+												
+												
                                         </li>
                                     </ul>
                                 </li>
@@ -119,7 +130,7 @@
                         </div>
                         <!--/ Buttons on the right -->
                     </h:form>
-                    <h:commandButton action="#{DBPopulator.addNewProducts()}" value="Click here to add more Products"  />
+                   <!--  <h:commandButton action="#{DBPopulator.addNewProducts()}" value="Click here to add more Products"  /> -->
                 </div>
             </div>
         </div>
