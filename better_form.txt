@@ -1,0 +1,77 @@
+<h:form class="form-horizontal">
+		
+			<h:div class='control-group'>
+				<h:label class="control-label" value="*#{i18n.name} :"></h:label>
+				
+				<h:div class="controls">
+					<h:inputText id="name" class="span4" placeholder="Product name" value="#{DBPopulator.name}" />
+				</h:div>
+				
+			</h:div>
+			
+			
+			<h:div class='control-group'>
+				<h:label class="control-label" for="description" value="*#{i18n.description} :"></h:label>
+				
+				<h:div class="controls">
+					<h:inputText id="description" class="span5" placeholder="Product description" value="#{DBPopulator.description}" />
+				</h:div>
+				
+			</h:div>
+			
+			
+			
+			<h:div class='control-group'>
+				<h:label class="control-label" for="newCatagory" value="*#{i18n.newCatagory} :"></h:label>
+				
+				<h:div class="controls">
+					<h:inputText id="newCatagory" class="span5" placeholder="Product category" value="#{DBPopulator.newCatagory}" />
+				</h:div>
+				
+			</h:div>
+			
+			
+			<h:div class='control-group'>
+				<h:label class="control-label" for="newCatagory" value="*#{i18n.itemCost} :"></h:label>
+				
+				<h:div class="controls">
+					<h:inputText id="itemCost" class="span5" placeholder="Item Cost" value="#{DBPopulator.itemCost}" />
+				</h:div>
+				
+			</h:div>
+			
+			
+			
+			<h:div class='control-group'>
+				<h:label class="control-label" for="imagePath" value="*#{i18n.imagePath} :"></h:label>
+				
+				<h:div class="controls">
+					<h:inputText id="itemCost" class="span5" placeholder="Item Cost" value="#{DBPopulator.imagePath}" />
+				</h:div>
+				
+			</h:div>
+			
+			
+			
+			<h:div class='control-group'>
+				<h:label class="control-label" for="FurtherDescription" value="*#{i18n.FurtherDescription} :"></h:label>
+				
+				<h:div class="controls">
+					<h:inputText id="FurtherDescription" class="span5" placeholder="Item Cost" value="#{DBPopulator.Description}" />
+				</h:div>
+				
+			</h:div>
+		
+
+			<h:div class='control-group'>
+				
+				
+				<h:div class="controls">
+					<h:button type="submit" name="btn_save" class='btn btn-primary btn-large'>Save</h:button>
+				</h:div>
+				
+			</h:div>
+
+
+		</h:form>
+
